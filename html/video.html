@@ -65,16 +65,17 @@
                 <div id="title">Blind Woodturner: Turning passion into fine art</div>
                 <div id="info">
                     <div id="info-text">576,969 views . Oct 8, 2021</div>
-                    <div id="top-level">
-                        <div><img src="" alt=""></div>
-                        <div>1.7 K</div>
-                        <div><img src="" alt=""></div>
+                    <!-- 이미지 파일 연결 7.31 김채홍 -->
+                    <div id="top-level" class="top-level">
+                        <div><img src="/svg/video-liked.svg" id="liked"></div>
+                        <div>1.7K</div>
+                        <div><img src="/svg/video-disliked.svg" id="disliked"></div>
                         <div>632</div>
-                        <div><img src="" alt=""></div>
+                        <div><img src="/svg/video-share.svg" id="share"></div>
                         <div>SHARE</div>
-                        <div><img src="" alt=""></div>
+                        <div><img src="/svg/video-save.svg" id="save"></div>
                         <div>SAVE</div>
-                        <div><img src="" alt=""></div>
+                        <div><img src="/svg/video-more.svg" id="more"></div>
                     </div>
                 </div>
                 <hr id="border">
@@ -144,6 +145,20 @@
         </div>
 
         <div class="secondary">
+
+            <!-- 세컨더리 카테고리 선택 버튼 추가 7.31 김채홍 -->
+            <div id="top-menu">
+                <div class="top-border"></div>
+
+                <span class="item-border">
+                    <span class="item">전체</span>
+                    <span class="item">게임</span>
+                </span>
+
+                <div class="bottom-border"></div>
+            </div>
+
+            
             <div id="content">
                 <div id="video">
 
@@ -151,26 +166,23 @@
                         <div id="thumnail-images">
                         </div>
                     </div>
-
+                    
                     <div id="video-text">
                         <ul>
                             <li id="video-name">메이플 육성 난이도 최상 에반 키우기</li>
-
+                            
                             <div id="channel-desc">
                                 <li id="chnnel-name">채호이의 메이플세상</li>
                                 <li id="channel-views">조회수 : 2323만회</li>
                             </div>
-
+                            
                         </ul>
-                    </div>
-
-
+                    </div> 
                 </div>
+                <!-- js 부분 추가 7.31 김채홍 -->
+                <main id="feed" class="feed"></main>
             </div>
-
-
         </div>
-
 
 </body>
 <script src="video.js"></script>
