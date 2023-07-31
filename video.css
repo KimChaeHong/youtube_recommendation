@@ -153,7 +153,6 @@ body {
     align-self: stretch;
 }
 
-/* video.html video calss 부분 css 적용 7.28 */
 .video {
     display: flex;
     flex-direction: row;
@@ -191,13 +190,16 @@ body {
     padding: 24px 24px 0px 0px;
     flex-direction: column;
     align-items: flex-start;
+    
+    /* border: 0.3px solid var(--gray-color, #AAA); */
 }
 
 #video {
     display: flex;
     padding-top: 8px;
     align-items: flex-start;
-
+   
+    border: 0.3px solid var(--gray-color, #AAA);
     /* border: 1px solid beige; */
 }
 
@@ -220,6 +222,7 @@ body {
     padding: 7px 0px;
     flex-direction: column;
     align-items: flex-start;
+    
     /* border: 1px solid red; */
 }
 
@@ -317,40 +320,80 @@ ul {
 
   
 }
+
+/* 뷰, 영상 올린날짜 7. 31 김채홍  */
 #info-text{
     display: flex;
     padding: 12px 0px;
     align-items: flex-start;
     gap: 10px;
-
-    color: var(--gray-color, #AAA);
+    color: #AAA;
     font-family: Roboto;
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;    
+    width: 190px;
+
+    /* border: solid 1px ; */
 }
+
+/* 좋아요, 싫어요 공유, 저장. 더보기 7. 31 김채홍  */
 #top-level{
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
+
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase; 
+
+    display: flex;
+    padding: 10px 6px 10px 0px;
+
+    /* border: solid 1px ;    */
 }
+
+#more, #share, #save, #disliked, #liked{
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    width: 24px;
+    height: 24px;
+
+    padding: 0px 2px;
+    justify-content: center;
+    align-items: center;
+
+    /* border: solid 1px red;    */
+
+}
+
 
 #border{
     width: 640px;
     height: 1px;   
     border-color:#303030
+
+    
 }
 
 #video-desc{
     display: flex;
-    padding-bottom: 16px;
+    width: 640px;
+    height: 166px;
     flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
-    gap: 10px; 
-    
+    flex-shrink: 0;
 
 }
+
 #desc{
     display: flex;
     width: 640px;
@@ -358,18 +401,26 @@ ul {
     justify-content: center;
     align-items: flex-start;
 }
+
 #channel-title{
     display: flex;
-    padding-top: 16px;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+
+    /* border: solid 1px white; */
+
 }
+
+/* 채널 아이콘, 채널 이름, 구독자 수, 구독 버튼 7.31 김채홍 */
 #frame11{
     width: 640px;
-    height: 51px;  
+    height: 50px;  
     display: flex;
+    /* border: solid 1px white; */
+    
 }
+/* 영상 설명 7.31 김채홍*/
 #video-desc-text{
     display: flex;
     padding: 12px 0px 0px 64px;
@@ -382,14 +433,20 @@ ul {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    /* border: solid 1px white; */
+
 }
+/* 채널 사진 7.31 김채홍*/
 #channel-profile-pic{
     display: inline-flex;
     padding: 0px 16px 3px 0px;
     align-items: flex-start;
     gap: 10px;
 
+    /* border: solid 1px white; */
 }
+/* 채널 사진 테두리 7.31 김채홍 */
 #user-avatar{
     display: flex;
 
@@ -398,7 +455,10 @@ ul {
     width: 48px;
     height: 48px;
     flex-shrink: 0;
-    border-radius: 80px;    
+    border-radius: 80px;
+    
+    /* border: solid 1px white; */
+     
 }
 #channel-profile-name{
     display: inline-flex;
@@ -460,12 +520,106 @@ ul {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    text-transform: uppercase;    
+    text-transform: uppercase;   
+    
 }
 
-/* img{
-width: 48px;
-height: 48px;
-flex-shrink: 0;
-border-radius: 80px;
-} */
+#top-menu {
+    display: flex;
+    padding: 24px 24px 0px 0px;
+    flex-direction: column;
+    align-items: flex-start;   
+}
+/* 세컨더리 카테고리 선택 부분 추가 7.31 김채홍 */
+.top-border {
+    width: 1200px;
+    height: 1px;
+}
+
+.bottom-border {
+    width: 1200px;
+    height: 1px;
+}
+
+.item {
+    display: inline-flex;
+    
+    padding: 8px 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    border-radius: 32px;
+    border: 0.3px solid #AAA;
+    background: #303030;
+
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.item:hover {
+    background-color: white;
+    color: #303030;
+    cursor: pointer;  
+}
+
+/* 세컨더리 컨텐츠 css 미완 7.31 김채홍 */
+.feed{
+    flex-direction: column;
+}
+
+
+.feed__item__thumbnail{
+    display: flex;
+    padding-right: 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px; 
+
+}
+
+.feed__item__info__title{
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+
+    display: flex;
+    padding: 24px 24px 0px 0px;
+    flex-direction: column;
+    align-items: flex-start;   
+
+}
+
+.feed__item__info{
+    color: var(--white-color, #FFF);
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */ 
+    
+}
+
+a{
+    text-decoration-line: none; 
+    color: #FFF;  
+    font-family: Roboto;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */ 
+}
+
+.feed__item{
+    display: flex;
+    padding-top: 8px;
+    align-items: flex-start;   
+    
+}
