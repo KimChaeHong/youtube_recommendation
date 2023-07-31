@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>비디오</title>
     <link rel="stylesheet" href="video.css">
+    <link rel="stylesheet" href="comment.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 </head>
@@ -112,6 +113,33 @@
                 </div>
             </div>
 
+            <!--댓글창 이어 붙임 7.31 신지수-->
+            <div class="primary-video-comment">
+                <div class="count-comments">
+                    <span>Comments</span>
+                    <span><img src="svg/bropdown.svg">SORT BY</span>
+                </div>
+                <form id="comment-form">
+                    <div class="comment-icon"><img src="svg/oreumi.png"></div>
+                    <div class="comment-in">
+                        <textarea id="comment" placeholder="Add a public comment..." required></textarea>
+                        <button class="comment-btn" type="submit">댓글</button>
+                    </div>    
+                </form>
+                <div id="comments">
+                    <!--댓글이 작성될 부분-->
+                </div>
+                <div class="comment-sample">
+                    <div class="comment-s-icon"><img src="svg/jibbi.PNG"></div>
+                    <div class="comment-s-info">
+                        <div><span class="comment-s-name">Jibbi</span><sapan class="comment-s-upload">8 hours ago</sapan></div>
+                        <div class="comment-s-comment">Naega deo nasda</div>
+                        <div class="comment-s-like"><img src="svg/like.svg"><img src="svg/bad.svg">1 <span class="reply">REPLY</span></div>
+                    </div>    
+                </div>
+            </div>
+            <!--여기 까지-->
+
 
         </div>
 
@@ -146,5 +174,5 @@
 
 </body>
 <script src="video.js"></script>
-
+<script src="comment.js"></script>
 </html>
