@@ -448,6 +448,6 @@ a{
 }
 
 /*test*/
-.channel-videos .sorting-buttons {
+.channel-videos{
     display: none;
   }
