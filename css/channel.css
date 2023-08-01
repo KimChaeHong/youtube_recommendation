@@ -446,3 +446,8 @@ a{
     color:#AAA;
     font-size: 16px;
 }
+
+/*test*/
+.channel-videos{
+    display: none;
+  }

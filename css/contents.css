@@ -1,0 +1,98 @@
+/* 컨텐츠 css 추가 허유미 8.1 */
+#feed {
+    margin-top: 150px;
+    margin-left: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.feed__item {
+    width: 276px;
+    margin: 0 8px 40px 8px;
+}
+
+.feed__item__thumbnail {
+    width: 276px;
+    height: 155px;
+    background-color: grey;
+    position: relative;
+}
+
+.feed__item__thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feed__item__timebar {
+    background-color: black;
+    color: #fff;
+    top: 86%;
+    right: 1%;
+    padding: 3px 4px;
+    font-size: 0.8em;
+    position: absolute;
+}
+
+.feed__item__info {
+    display: flex;
+    font-size: 14px;
+    color: #AAA;
+    margin-top: 12px;
+}
+
+.feed__item__info h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #fff;
+    word-break: break-all;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.feed__item__info a {
+    text-decoration: none;
+    color: unset;
+}
+
+.feed__item__info__title {
+    font-size: 1rem;
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+
+.feed__item__info__channel {
+    font-size: 14px;
+}
+
+.feed__item__info p {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+}
+
+.feed__item__info__avatar {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    background-color: grey;
+    margin: 12px 12px 0 0;
+}
+
+.feed__section {
+    border-top: 3px solid lightgrey;
+    border-bottom: 3px solid lightgrey;
+    margin: 24px 35px 48px;
+}
+
+.feed__section h2 {
+    margin-left: 8px;
+}
+
+.feed__section__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
