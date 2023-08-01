@@ -40,7 +40,7 @@ menuItems.forEach(menu => {
 // 클릭 이벤트 여기까지
 // 클릭 이벤트 여기까지
 // 클릭 이벤트 여기까지
-
+getVideoInfo()
 
 async function getVideoInfo(videoId) {
     // API URL
