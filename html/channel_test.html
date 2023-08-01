@@ -1,26 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Channel</title>
     <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/contents.css">
+    <link rel="stylesheet" href="../css/channel.css">
+
+    
 </head>
-
 <body>
-
-    <!-- 네비게이션 추가 허유미 7.25-->
-    <!-- 태그, 클래스 이름 변경 nav -> (mast)head 허유미 7.26 -->
+    <!--검색창-->
     <div id="masthead">
         <div class="head-yt-btn">
             <div id="menu-icon" class="head-yt-btn">
-                <img src="../svg/masthead/menu-icon.svg" alt="menu-icon">
+                <img src="../svg/menu-icon.svg" alt="menu-icon">
             </div>
             <div id="yt-logo" class="head-yt-btn">
-                <img src="../svg/masthead/yt-logo.svg" alt="yt-logo">
+                <img src="../svg/yt-logo.svg" alt="yt-logo">
             </div>
         </div>
 
@@ -28,75 +27,32 @@
             <div class="search-box-area">
                 <input class="search-bar" id="searchInput" type="text" placeholder="Search">
                 <div class="search-btn" id="search-btn">
-                    <img src="../svg/masthead/search-btn.svg" alt="search-btn">
+                    <img src="../svg/search-btn.svg" alt="search-btn">
                 </div>
             </div>
             <div class="search-mic">
-                <img src="../svg/masthead/search-mic.svg" alt="search-mic">
+                <img src="../svg/search-mic.svg" alt="search-mic">
             </div>
         </div>
 
         <div class="head-profile">
             <div class="profile" id="profile-create">
-                <img src="../svg/masthead/profile-create.svg" alt="profile-create">
+                <img src="../svg/profile-create.svg" alt="profile-create">
             </div>
             <div class="profile" id="profile-apps">
-                <img src="../svg/masthead/profile-apps.svg" alt="profile-apps">
+                <img src="../svg/profile-apps.svg" alt="profile-apps">
             </div>
             <div class="profile" id="profile-notice">
-                <img src="../svg/masthead/profile-notice.svg" alt="profile-notice">
+                <img src="../svg/profile-notice.svg" alt="profile-notice">
             </div>
             <div class="profile-user-avatar">
-                <img src="../svg/masthead/profile-user-avatar.svg" alt="profile-user-avatar">
+                <img src="../svg/profile-user-avatar.svg" alt="profile-user-avatar">
             </div>
         </div>
     </div>
-    
 
-        
-    <!-- 사이드바 2개 버전 - 토글버튼 클릭할때마다 교체 -->
-    <!-- 사이드바 미니버전(접었을때) 추가 허유미 7.31 -->
-    <nav id="sidebar-mini">
-        <div id="sidebar-mini-home">
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 10V21H10V15H14V21H20V10L12 3L4 10Z" fill="white"/>
-                </svg>
-            </span>
-            <a>Home</a>
-        </div>
-
-        <div>
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M9.8 9.8L5.97 18.03L14.2 14.2L18.03 5.97L9.8 9.8ZM13.08 12.77C12.87 13.06 12.57 13.25 12.22 13.31C12.15 13.32 12.07 13.33 12 13.33C11.72 13.33 11.46 13.25 11.23 13.08C10.94 12.87 10.75 12.57 10.69 12.22C10.63 11.87 10.71 11.51 10.92 11.23C11.13 10.94 11.43 10.75 11.78 10.69C12.13 10.63 12.48 10.71 12.77 10.92C13.06 11.13 13.25 11.43 13.31 11.78C13.37 12.13 13.29 12.48 13.08 12.77ZM12 3C16.96 3 21 7.04 21 12C21 16.96 16.96 21 12 21C7.04 21 3 16.96 3 12C3 7.04 7.04 3 12 3ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="white"/>
-                </svg>
-            </span>
-            <a>Explore</a>
-        </div>
-
-        <div>
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M10 18V12L15 15L10 18ZM17 3H7V4H17V3ZM20 6H4V7H20V6ZM22 9H2V21H22V9ZM3 10H21V20H3V10Z" fill="white"/>
-                </svg>
-            </span>
-            <a>Subscribe</a>
-        </div>
-
-        <div>
-            <span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M11 7L17 10.5L11 14V7ZM18 20H4V6H3V21H18V20ZM21 18H6V3H21V18ZM7 17H20V4H7V17Z" fill="white"/>
-                </svg>
-            </span>
-            <a>Lİbrary</a>
-        </div>
-    </nav>
-
-    <!-- 사이드바 추가 이준희 7.26 -->
-    <!-- 사이드바 수정 이준희 7.27 -->
-    <nav id="sidebar-wide">
+    <!--사이드바-->
+    <nav id="sidebar">
         <div class="top"> 
             <!-- 탑 클래스의 css에 마지막 부분에 구분선을 보더 바텀을 통해 넣어줌 -->
             <!-- 메뉴 1과 2가 다른 이유는 메뉴 1에는 백그라운드 색이 들어가기 때문 -->
@@ -104,7 +60,7 @@
             <button class="menu" type="button" onclick = "location.href=''">
                 <!-- 아이콘 삽입 -->
                 <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 10V21H10V15H14V21H20V10L12 3L4 10Z" fill="white"/>
+                <path d="M4 10V21H10V15H14V21H20V10L12 3L4 10Z" fill="white"/>
                 </svg></span>
 
                 <!-- 아이콘과 home 사이 공백을 구현하기 위해 span 태그 이용 -->
@@ -112,12 +68,13 @@
                 
                 <!-- home 스타일 구현 -->
                 <div class="menu-title">
-                    <span class="menu-title-style">Home</<span>
+                    <span class="menu-title-style">Home</span>
                 </div>
             </button>
         
                 
                 
+            </div>
             <!-- 아래부터 반복(css값이 같기 때문에 같은 클래스 사용) -->
             <button class="menu2" type="button"  onclick = "location.href=''">
                 <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -152,7 +109,7 @@
                         </svg></span>
                     <span class="menu-item"></span>
                     <div class="menu-title">
-                        <span class="menu-title-style">Lİbrary</span>
+                        <span class="menu-title-style">LIbrary</span>
                     </div>
                 </button>
                 
@@ -198,9 +155,7 @@
                 </button>
 
                 <button class="menu2" type="button"  onclick = "location.href=''">
-                    <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path d="M12.0001 15.7L5.6001 9.4L6.3001 8.7L11.9001 14.3L17.5001 8.7L18.2001 9.4L12.0001 15.7Z" fill="white"/>
-                        </svg></span>
+                    <span><img src="../sidebar_image/showmore.svg" width="18" height="18"></span>
                     <span class="menu-item"></span>
                     <div class="menu-title">
                         <span class="menu-title-style">Show More</span>
@@ -221,65 +176,64 @@
                     </div>
                 </div>
 
-                <!-- 구독 정보 변경 허유미 8.1 -->
                 <button class="menu2" type="button"  onclick = "location.href=''">
-                    <span><img src="../sidebar_image/water.jpg" width="24" height="24" fill="white" viewBox="0 0 24 24"></span>
+                    <span><img src="../sidebar_image/James_Gouse.svg" width="24" height="24" fill="white" viewBox="0 0 24 24"></span>
                     <span class="menu-item"></span>
                     <div class="menu-title">
-                        <span class="menu-title-style">Water Please</span>
+                        <span class="menu-title-style">James Gouse</span>
                     </div>
                 </button> 
 
                 <button class="menu2" type="button"  onclick = "location.href=''">
-                    <span><img src="../sidebar_image/hoi.jpg" width="24" height="24"></span>
+                    <span><img src="../sidebar_image/Alan_Cooper.svg" width="24" height="24"></span>
                     <span class="menu-item"></span>
                     <div class="menu-title">
-                        <span class="menu-title-style">호이 vlog</span>
+                        <span class="menu-title-style">Alan Cooper</span>
                     </div>
                 </button> 
 
                 <button class="menu2" type="button"  onclick = "location.href=''">
-                    <span><img src="../sidebar_image/jisulog.png" width="24" height="24"></span>
+                    <span><img src="../sidebar_image/Marcus_Levin.svg" width="24" height="24"></span>
                     <span class="menu-item"></span>
                     <div class="menu-title">
-                        <span class="menu-title-style">지수와 로그</span>
+                        <span class="menu-title-style">Marcus Levin</span>
                     </div>
                 </button> 
 
                 <button class="menu2" type="button"  onclick = "location.href=''">
-                    <span><img src="../sidebar_image/juniverse.jpg" width="24" height="24"></span>
+                    <span><img src="../sidebar_image/Alexis_Sears.svg" width="24" height="24"></span>
                     <span class="menu-item"></span>
                     <div class="menu-title">
-                        <span class="menu-title-style">Juniverse TV</span>
+                        <span class="menu-title-style">Alexis Sears</span>
                     </div>
                 </button> 
 
                 <button class="menu2" type="button"  onclick = "location.href=''">
-                    <span><img src="../sidebar_image/yumicell.jpg" width="24" height="24"></span>
+                    <span><img src="../sidebar_image/Jesica_Lambert.svg" width="24" height="24"></span>
                     <span class="menu-item"></span>
                     <div class="menu-title">
-                        <span class="menu-title-style">유미의 세포들</span>
+                        <span class="menu-title-style">Jesica Lambert</span>
                     </div>
                 </button> 
 
                 <button class="menu2" type="button"  onclick = "location.href=''">
-                    <span><img src="../svg/oreumi.png" width="24" height="24"></span>
+                    <span><img src="../sidebar_image/Anna_White.svg" width="24" height="24"></span>
                     <span class="menu-item"></span>
                     <div class="menu-title">
-                        <span class="menu-title-style">오르미 2기</span>
+                        <span class="menu-title-style">Anna White</span>
                     </div>
                 </button> 
 
                 <button class="menu2" type="button"  onclick = "location.href=''">
-                    <span><img src="../sidebar_image/pill.jpg" width="24" height="24"></span>
+                    <span><img src="../sidebar_image/Skylar_Dias.svg" width="24" height="24"></span>
                     <span class="menu-item"></span>
                     <div class="menu-title">
-                        <span class="menu-title-style">ESTsoft</span>
+                        <span class="menu-title-style">Skylar Dias</span>
                     </div>
                 </button> 
 
                 <button class="menu2" type="button">
-                    <span><img src="../sidebar_image/Show_13_more.svg" width="24" height="24"></span>
+                    <span><img src="../sidebar_image/showmore.svg" width="18" height="18"></span>
                     <span class="menu-item"></span>
                     <div class="menu-title">
                         <span class="menu-title-style">Show 13 more</span>
@@ -439,41 +393,59 @@
         </div>
     </nav>
 
+    <!--채널-->
+    <div class="channel">
+        <div class="channel-cover">
+            <img src="../svg/channel-cover.png" alt="image">
+        </div>
+        <div class="channel-title">
+            <div class="channel-profile">
+                <div><img src="../svg/oreumi.png"></div>
+                <div>
+                    <div class="chanelname">채널 이름</div>
+                    <div class="subsc-count">구독자 수</div>
+                </div>
+            </div>
+            <div class="subsc-btn">SUBSCRIBES</div>
+        </div>
+        <div class="channel-toolbar">
+            <div class="toolbars">
+                <div class="toolbar-menu" data-menu="HOME">HOME</div>
+                <div class="toolbar-menu" data-menu="VIDEOS">VIDEOS</div>
+                <div class="toolbar-menu" data-menu="PLAYLISTS">PLAYLISTS</div>
+                <div class="toolbar-menu" data-menu="COMMUNITY">COMMUNITY</div>
+                <div class="toolbar-menu" data-menu="CHANNELS">CHANNELS</div>
+                <div class="toolbar-menu" data-menu="ABOUT">ABOUT</div>
+            </div>
+            <div class="channel-search">
+                <div class="c-search-icon"><img src="../svg/search-icon.svg"></div>
+                <div class="c-search-btn"><img src="../svg/leftarrow.svg"></div>
+            </div>
+        </div>
 
-    <!-- 탑 메뉴 추가 김채홍 7.25-->
-    <header id="top-menu">
-
-        <div class="top-border"></div>
-
-        <span class="item-border">
-            <span class="item">전체</span>
-            <span class="item">로봇</span>
-            <span class="item">공학</span>
-            <span class="item">토끼</span>
-            <span class="item">환경</span>
-            <span class="item">뉴스</span>
-            <span class="item">최근에 업로드 된 동영상</span>
-            <span class="item">감상한 동영상</span>
-            <span class="item">새로운 맞춤 동영상</span>
-        </span>
-            
-        <div class="bottom-border"></div>
-    </header>
+        <!--동영상-->
+        <div class="channel-home">
+        <div class="channel-videos">
+            <div class="sorting-buttons" id="sortingButtons">
+                <button id="latestButton">최신순</button>
+                <button id="popularButton">인기순</button>
+                <button id="dateButton">날짜순</button>
+              </div>
+            <div id="feed"></div>
+        </div> <!--VIDEOS 영역-->
+        <div claa="channel-playlists"></div>
+        <div claa="channel-community"></div>
+        <div claa="channel-channels"></div>
+        <div claa="channel-about"></div>
 
 
-    <!-- 썸네일 작성, 태그 지정-->
-    <!-- 썸네일 태그 수정, api id 값 설정, user-avatar 이미지 고정 신지수 7.26-->
-    <!-- 썸네일 부분 컨텐츠로 id 변경, 틀만 남기고 나머지 contents.js에서 작업 허유미 8.1 -->
-    <section id="contents">
-        <main id="feed" class="feed">
-            
-        </main>
-    </section>
+    </div>
 
-
-    <script src="../js/sidebar.js"></script>
     <script src="../js/search.js"></script>
-    <script src="../js/home_loading.js"></script>
+    <script src="../js/search_2.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/channal_tool.js"></script>
+    <!-- <script src="../js/channal_video.js"></script> -->
 
 </body>
 </html>
