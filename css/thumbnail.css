@@ -5,12 +5,16 @@ a {
     color: white;
 }
 
+/* display: flex, 관련 속성 변경 허유미 7.31  */
 #thumbnail {
+    margin-top: 150px;
+    margin-left: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    justify-content: flex-start;
     background-color: black;
-    display: grid;
-    padding: 16px;
     color: white;
-    grid-template-rows: 1fr 1fr 1fr;
     row-gap: 40px;
 }
 
@@ -58,7 +62,6 @@ a {
     display: none;
 }
 
-
 .videoFrame {
     display: none;
 }
@@ -99,10 +102,8 @@ a {
     margin: 1px;
 }
 
-
 .thumb-title {
     font-size: 18px;
-    /* font-weight: bold; */
 }
 
 .chanelname,
