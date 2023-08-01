@@ -160,7 +160,10 @@ body {
     left: 65px;
     z-index: 1;
 }
-
+.item-border {
+    display: flex;
+    white-space: nowrap;
+}
  /* 공통된 css 하나로 묶음 허유미 7.27 */
 .top-border,
 .bottom-border {
