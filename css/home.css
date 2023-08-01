@@ -159,11 +159,12 @@ body {
     right: 0px;
     left: 65px;
     z-index: 1;
+    
 }
 .item-border {
     display: flex;
     white-space: nowrap;
-
+    
 }
  /* 공통된 css 하나로 묶음 허유미 7.27 */
 .top-border,
@@ -202,4 +203,24 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    
+}
+
+.item-border{
+    overflow : hidden;
+}
+
+.icon{
+    display: inline-flex;
+    padding: 8px 12px;
+    margin: 10px 5px 10px 5px;
+    gap: 10px;
+    width: 16px;
+    justify-content: center;
+    align-items: center;
+    
+    background: rgba(33, 33, 33, 0.90);
+    position: sticky;
+    left: 50px;
+     
 }
