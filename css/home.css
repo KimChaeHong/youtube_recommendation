@@ -210,3 +210,8 @@ main {
     font-weight: 400;
     line-height: normal;
 }
+
+.item-border{
+    display: flex;
+    white-space: nowrap;
+}
