@@ -174,9 +174,10 @@ body {
 }
 
 /* 간격 조정 추가 허유미 7.31 */
-.item-border span:first-child {
+/* 간격 조정 .item 요소로 옮김 김채홍 7.28 */
+/* .item-border span:first-child {
     margin-left: 30px;
-}
+} */
 
 /* 아이템에 마우스 올렸을 시 색상과 배경색상 변경 김채홍 7.26 */
 .item:hover {
@@ -188,7 +189,7 @@ body {
 .item {
     display: inline-flex;
     padding: 8px 12px;
-    margin: 10px 0;
+    margin: 10px 5px 10px 5px;
     gap: 10px;
     
     border-radius: 32px;
