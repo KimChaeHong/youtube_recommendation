@@ -161,6 +161,7 @@ body {
     z-index: 1;
     
 }
+/* 요소 줄바꿈 없애기 김채홍 08.01 */
 .item-border {
     display: flex;
     white-space: nowrap;
@@ -206,6 +207,7 @@ body {
     
 }
 
+/* icon 추가 김채홍 08.01 */
 .item-border{
     overflow : hidden;
 }
