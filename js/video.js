@@ -66,8 +66,8 @@ async function createVideoItem(videoList) {
 
         // 조회수 표현
         function formatViews(views) {
-            if (views >= 10000) {
-                return `${(views / 10000).toFixed(1).replace(/\.0$/, '')}M`;
+            if (views >= 1000000) {
+                return `${(views / 1000000).toFixed(1).replace(/\.000$/, '')}M`;
             } else if (views >= 1000) {
                 return `${(views / 1000).toFixed(1).replace(/\.0$/, '')}K`;
             } else {
@@ -118,6 +118,7 @@ async function createVideoItem(videoList) {
             <div id="channel-desc">
                 <li id="chnnel-name"><a href="${channelURL}">${videoInfo.video_channel}</a></li>
                 <li id="channel-views"><p>${simpleViews} views • ${uploadTimeAgo}</p></li>
+                </div>
             </div>
             
         </ul>
