@@ -67,9 +67,9 @@ async function createVideoItem(videoList) {
         // 조회수 표현
         function formatViews(views) {
             if (views >= 10000) {
-                return `${(views / 10000).toFixed(1).replace(/\.0$/, '')}만`;
+                return `${(views / 10000).toFixed(1).replace(/\.0$/, '')}M`;
             } else if (views >= 1000) {
-                return `${(views / 1000).toFixed(1).replace(/\.0$/, '')}천`;
+                return `${(views / 1000).toFixed(1).replace(/\.0$/, '')}K`;
             } else {
                 return `${views}`;
             }
