@@ -117,7 +117,7 @@ async function createVideoItem(videoList) {
             
             <div id="channel-desc">
                 <li id="chnnel-name"><a href="${channelURL}">${videoInfo.video_channel}</a></li>
-                <li id="channel-views"><p>${simpleViews} views . ${uploadTimeAgo}</p></li>
+                <li id="channel-views"><p>${simpleViews} views • ${uploadTimeAgo}</p></li>
             </div>
             
         </ul>
