@@ -1,35 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>channel_ing</title>
     <link rel="stylesheet" href="../css/reset.css">
-    <!-- <link rel="stylesheet" href="../css/home.css">
-    <link rel="stylesheet" href="../css/sidebar.css"> -->
+    <!-- <link rel="stylesheet" href="../css/global_style.css"> -->
+    <!-- <link rel="stylesheet" href="../css/header_style.css"> -->
+    <!-- <link rel="stylesheet" href="../css/aside_style.css"> -->
+    <!-- <link rel="stylesheet" href="../css/chip_style.css"> -->
+    <link rel="stylesheet" href="../css/channel_feed_style.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
     <link rel="stylesheet" href="../css/channel.css">
+    
+    <title>YouTube</title>
 </head>
+
 <body>
+    
+
+    <!--채널-->
     <div class="channel">
         <div class="channel-cover">
             <img src="../svg/channel-cover.png" alt="image">
         </div>
-
         <div class="channel-title">
             <div class="channel-profile">
                 <div><img src="../svg/oreumi.png"></div>
                 <div>
-                    <a class="chanelname" href="./channel?video_channel=oreumi">오르미</a>
+                    <div class="chanelname">오르미</div>
                     <div class="subsc-count">1.2M subscribers</div>
                 </div>
             </div>
             <div class="subsc-btn">SUBSCRIBES</div>
         </div>
-
         <div class="channel-toolbar">
             <div class="toolbars">
-                <div class="toolbar-menu">
-                    <div id="toobar-home">HOME</div>
+                <div class="toolbar-menu"  id="toobar-home">
+                    <div>HOME</div>
                     <div class="border"></div>
                 </div>
                 <div class="toolbar-menu">
@@ -53,15 +62,40 @@
                 <div class="c-search-btn"><img src="../svg/leftarrow.svg"></div>
             </div>
         </div>
-
-        <div id="small-video"></div>
-
-        <div class="play-list"></div>
-
-            
-    </div>
+    
+        <main id="channel__feed" class="channel__feed">
+            <div id="channel__info__container" class="channel__info__container">
+                
+            </div>
+    
+            <!-- VIDEOs -->
+            <div class="video__container">
+                <div id="channel__big__video__box" class="channel__big__video__box">
+                    
+                </div>
+    
+                <div id="playlist__box" class="playlist__box">
+                    <div id="playlist__info" class="playlist__info">
+                        <div class="playlist__title">오르미의 모든것</div>
+                        <button>
+                            <div>
+                                <img src="../svg/play-icon.svg">
+                            </div>
+                            <div>PLAY ALL</div>
+                        </button>
+                    </div>
+                    <div id="playlist" class="playlist">
+                        
+                    </div>
+    
+                </div>
+            </div>
+        </main>
     
 
+    
 </body>
-<script src="../js/test.js"></script>
+
+<script type="text/javascript" src="../js/channel_ing.js"></script>
+
 </html>
