@@ -1,3 +1,4 @@
+//툴바 - 비디오, 플레이 리스트 추가, 수정 8.2 신지수
 // 클릭 효과 추가
 const menuItems = document.querySelectorAll('.toolbar-menu');
 
@@ -174,31 +175,28 @@ function calculateTimeAgo(uploadDate) {
   const yearsAgo = Math.floor(monthsAgo / 12);
 
   if (daysAgo === 0) {
-    return "오늘";
+    return "today";
   } else if (daysAgo === 1) {
-    return "어제";
+    return "yesterday";
   } else if (monthsAgo < 1) {
-    return `${daysAgo}일 전`;
+    return `${daysAgo}days ago`;
   } else if (monthsAgo < 12) {
-    return `${monthsAgo}개월 전`;
+    return `${monthsAgo}months ago`;
   } else {
-    return `${yearsAgo}년 전`;
+    return `${yearsAgo}years ago`;
   }
 }
 
 //조회수 계산
 function formatViews(views) {
   if (views < 1000) {
-    return views + "회";
-  } else if (views < 10000) {
-    const thousands = (views / 1000).toFixed(1);
-    return thousands + "천회";
-  } else if (views < 100000) {
-    const tenThousands = (views / 10000).toFixed(1);
-    return tenThousands + "만회";
+    return views + " views";
+  } else if (views < 1000000) {
+    const thousands = Math.floor(views / 1000);
+    return thousands + "K views";
   } else {
-    const hundredThousands = Math.floor(views / 10000);
-    return hundredThousands + "만회";
+    const millions = (views / 1000000).toFixed(1);
+    return millions + "M views";
   }
 }
 
@@ -233,7 +231,7 @@ async function createVideoItem(videoList) {
           <div class="c-videos">
               <a href="./video.html?id=${videoId}">
                   <div class="c-videos-title">${videoInfo.video_title}</div>
-                  <div class="c-videos-info">조회수 ${formattedViews} • ${uploadTimeAgo}</div>
+                  <div class="c-videos-info">Views ${formattedViews} • ${uploadTimeAgo}</div>
               </a>
           </div>
       </div>
@@ -253,10 +251,10 @@ async function createPlaylistItem(videoList) {
   );
   let videoInfoList = await Promise.all(videoInfoPromises);
 
-  // 재생목록 정보 추가
-  feedListItems += `
-    <div class="channel-playlists-info">생성된 재생목록</div>
-  `;
+  // // 재생목록 정보 추가
+  // feedListItems += `
+  //   <div class="channel-playlists-info">생성된 재생목록</div>
+  // `;
 
   for (let i = 9; i<12; i++) {
     let videoId = videoList[i].video_id;
@@ -267,8 +265,11 @@ async function createPlaylistItem(videoList) {
     feedListItems += `
       <div class="feed-list-item">
         <a href="./video.html?id=${videoId}">
-        <div class="thumbnail-item">
+        <div class="playlist-thumbnail-item">
           <img src="${videoInfo.image_link}">
+        </div>
+        <div>
+          <div class="playlist-info">${videoInfo.video_tag}</div>
         </div>
         </a>
       </div>
@@ -277,11 +278,3 @@ async function createPlaylistItem(videoList) {
 
   feedList.innerHTML = feedListItems;
 }
-
-
-
-
-
-
-
-
