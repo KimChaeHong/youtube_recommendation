@@ -1,104 +1,122 @@
-function createVideoItem(video_id) {
-  // XMLHttpRequest 객체 생성
-  let xhr = new XMLHttpRequest();
 
-  // API 요청 설정
-  let apiUrl = `http://oreumi.appspot.com/video/getVideoInfo?video_id=${video_id}`;
-  xhr.open("GET", apiUrl, true);
+// 처음 화면 로드 시 전체 비디오 리스트 가져오기
+getVideoList().then(createVideoItem);
 
-  // 응답 처리 설정
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-      // 가져온 응답 처리
-      let response = JSON.parse(xhr.responseText);
+// 현재 주소에서 채널명 가져오기
+let currentURL = window.location.href;
+let url = new URL(currentURL);
+let channelName = url.searchParams.get("channelName"); //채널명
+channelName = "oreumi";
 
-      // 데이터 있는지 확인
-      if (response && response.video_id !== undefined) {
-        let image_link = response.image_link;
-        let upload_date = response.upload_date;
-        let video_channel = response.video_channel;
-        let video_detail = response.video_detail;
-        let video_id = response.video_id;
-        let video_link = response.video_link;
-        let video_tag = response.video_tag;
-        let video_title = response.video_title;
-        let views = response.views;
-
-        // 채널 데이터를 가져오기 위해 POST 요청
-        let channelApiUrl = "http://oreumi.appspot.com/channel/getChannelInfo";
-        let channelXhr = new XMLHttpRequest();
-        channelXhr.open("POST", channelApiUrl, true);
-        channelXhr.setRequestHeader("Content-Type", "application/json");
-
-        // post 요청에 JSON 데이터 넣기
-        let postData = JSON.stringify({ video_channel: video_channel });
-        channelXhr.onreadystatechange = function () {
-          if (
-            channelXhr.readyState === XMLHttpRequest.DONE &&
-            channelXhr.status === 200
-          ) {
-            let channelResponse = JSON.parse(channelXhr.responseText);
-
-            // 채널 데이터를 받아와서 처리하는 로직 추가
-            if (channelResponse) {
-              let channel_profile = channelResponse.channel_profile;
-
-              // html에 요소 넣기
-              // 스몰 비디오
-
-              // 컨테이너 생성
-              
-              //영상 넣기
-              
-              let link = document.createElement("a");
-              link.href = video_link;
-              link.classList.add("s-video");
-
-              //제목 넣기
-              let videoTitle = document.createElement("div");
-              videoTitle.classList.add("video-title");
-              videoTitle.textContent = video_title;
-
-              //썸네일
-              let thumbnailDiv = document.createElement("div");
-              thumbnailDiv.classList.add("feed__item__thumbnail");
-
-              let thumbnailImage = document.createElement("img");
-              thumbnailImage.src = image_link;
-              thumbnailDiv.appendChild(thumbnailImage);
-              
-              
-
-              let small_video = document.getElementById('small-video');
-              small_video.appendChild(link);
-              small_video.appendChild(videoTitle);
-              small_video.appendChild(thumbnailDiv);
-
-
-              
-
-
-              
-
-              // FEED에 컨테이너 추가
-              // let channel = document.getElementById("channel");
-              // feed.appendChild(videoContainer);
-
-              // 재귀호출
-
-              // createVideoItem(video_id + 1);
-            }
-          }
-        };
-        // 채널 데이터 요청 전송
-        channelXhr.send(postData);
-      }
-    }
-  };
-
-  // 요청 전송
-  xhr.send();
+// 비디오 리스트 정보
+async function getVideoList() {
+  let response = await fetch("http://oreumi.appspot.com/video/getVideoList");
+  let videoListData = await response.json();
+  return videoListData;
 }
 
-// id = 0부터 아이템 불러오기
-createVideoItem(0);
+// 각 비디오 정보
+async function getVideoInfo(videoId) {
+  let url = `http://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
+  let response = await fetch(url);
+  let videoData = await response.json();
+  return videoData;
+}
+
+// 채널 정보
+async function getChannelInfo() {
+  let url = `http://oreumi.appspot.com/channel/getChannelInfo`;
+
+  let response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ video_channel: channelName }),
+  });
+
+  let channelData = await response.json();
+  return channelData;
+}
+
+// 채널 내 영상정보
+async function getChannelVideo() {
+  let response = await fetch(
+    `http://oreumi.appspot.com/video/getChannelVideo?video_channel=${channelName}`
+  );
+  let videoListData = await response.json();
+  return videoListData;
+}
+
+// 피드 내용 로드
+async function createVideoItem(videoList) {
+  let channelInfoContainer = document.getElementById(
+    "channel__info__container"
+  ); // 채널인포 컨테이너
+  let channelBigVideoBox = document.getElementById("channel__big__video__box"); // 대표영상 컨테이너
+
+  let channelInfoItems = ""; //채널인포
+  let bigVideoItem = ""; //대표영상
+
+  // 각 비디오들 정보 가져오기
+  let videoInfoPromises = videoList.map((video) =>
+    getVideoInfo(video.video_id)
+  );
+  let videoInfoList = await Promise.all(videoInfoPromises);
+  //채널명으로 필터링
+  let filteredVideoList = videoInfoList.filter(
+    (videoInfo) => videoInfo.video_channel === channelName
+  );
+
+  //채널 정보 가져오기
+  let channelInfo = await getChannelInfo();
+
+  //채널정보 페이지에추가
+  // channelInfoItems += `
+
+  //   `;
+
+  // channelInfoContainer.innerHTML = channelInfoItems;
+
+  // 대표영상정보 페이지에 추가
+  let masterVideo = filteredVideoList[0];
+  bigVideoItem += `
+                <div class="channel__big__video">
+                  <video>
+                  <source src='${masterVideo.video_link}' type="video/mp4"> 
+                  </video>
+                </div>
+                <div class="big__video__info">
+                    <h5>${masterVideo.video_title}</h5>
+                    <p>${masterVideo.views} views. ${masterVideo.upload_date}</p>
+                    <p>${masterVideo.video_detail}</p>
+                </div>
+    
+    `;
+
+  channelBigVideoBox.innerHTML = bigVideoItem;
+
+  // 플레이리스트 정보 페이지에 추가
+  let playlistContainer = document.getElementById("playlist");
+  let playlistItems = "";
+  for (let i = 0; i < filteredVideoList.length; i++) {
+    let videoId = filteredVideoList[i].video_id;
+    let videoInfo = filteredVideoList[i];
+    let videoURL = `./video?id=${videoId}"`;
+
+    playlistItems += `
+    <div class="channel__small__video__box">
+      <div class="video__thumbnail">
+          <img src="${filteredVideoList[i].image_link}" alt="">
+      </div>
+      <div class="video__info">
+          <h4>${filteredVideoList[i].video_title}</h4>
+          <p>${channelName}</p>
+          <p>${filteredVideoList[i].views} views. ${filteredVideoList[i].upload_date}</p>
+      </div>
+    </div>
+      `;
+  }
+
+  playlistContainer.innerHTML = playlistItems;
+}
