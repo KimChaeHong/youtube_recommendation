@@ -172,7 +172,7 @@ body {
     background: #181818;
 }
 
-/* 높이 삭제 8.2 김채홍 */
+/* 높이 삭제 08.02 김채홍 */
 .secondary {
     /* display: flex; */
     width: 426px;
@@ -184,7 +184,7 @@ body {
     background: #181818;
 
 }
-
+/* content 하위 태그 css 전체 수정 08.02 김채홍 */
 #content {
     display: flex;
     padding: 24px 24px 0px 0px;
