@@ -1,20 +1,76 @@
-/* 사이드바 css 이준희 07.26 */
-#sidebar {
+/* 사이드바 미니버전 추가 허유미 7.31 */
+#sidebar-mini {
     display: flex;
-    width: 240px;
-    height: 100%;
-    padding-right: 0px;
-    padding-left: 0px;
+    width: 65px;
+    height: calc(100vh - 80px);
+    top: 56px;
+    left: 0px;
+    bottom: 0px;
+    padding: 12px 0px;
+    background-color: #212121;
+    position: fixed;
+    z-index: 1;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-shrink: 0;
+}
+
+#sidebar-mini div {
+    margin-bottom: 30px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#sidebar-mini span {
+    padding: 15px 0 3px;
+    flex-direction: column;
+    margin-left: 18px;
+}
+
+#sidebar-mini span img {
+    height: 24px;
+    width: 24px;
+    margin-right: 24px;
+}
+
+#sidebar-mini div a {
+    color: #FFF;
+    font-size: 12px;
+    margin-left: 13px;
+}
+
+#sidebar-mini :nth-child(1) a {
+    margin-left: 15px;
+}
+
+#sidebar-mini :nth-child(3) a {
+    margin-left: 6px;
+}
+
+
+/* 사이드바 css 이준희 07.26 */
+
+/* 일부 속성 추가 및 삭제 허유미 07.31 */
+::-webkit-scrollbar {
+    display:none;
+}
+
+ /* 사이드바 미니버전 추가에 따라 일부 변경 7.31 허유미 */
+#sidebar-wide {
+    display: none;
+    width: 240px;
+    height: calc(100vh - 80px);
+    top: 56px;
+    left: 0px;
+    bottom: 0px;
+    padding: 12px 0px;
+    flex-direction: column;
     background-color: #212121;
     
-    /* position: fixed; */
+    position: fixed;
     width: 240px;
     overflow: hidden;
-    transition: .5s;
+    z-index: 1;
+    overflow-y: scroll;
 }
 
 .top {
@@ -38,6 +94,7 @@
 }
 
 .menu:hover{
+    cursor: pointer;  /* 속성 추가 허유미 8.1 */
     background-color: #3d3d3d;
 }
 
@@ -56,6 +113,7 @@
 }
 
 .menu2:hover{
+    cursor: pointer;  /* 속성 추가 허유미 8.1 */
     background-color: #303030;
 }
 
@@ -193,4 +251,9 @@
 #frame3{
     width: 189px;
     height: 45px;
+}
+
+/* 채널이름에 맞는 이미지 추가 허유미 8.1 */
+.sub img{
+    border-radius: 50%;
 }
