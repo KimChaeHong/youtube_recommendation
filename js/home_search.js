@@ -67,12 +67,12 @@ async function createVideoItem(videoList) {
 
         // 조회수 간단하게 표현
         function formatViews(views) {
-            if (views >= 10000) {
-                return `${(views / 10000).toFixed(1).replace(/\.0$/, '')}만`;
+            if (views >= 1000000) {
+                return `${(views / 1000000).toFixed(1).replace(/\.0$/, '')}M`; // 백만 회
             } else if (views >= 1000) {
-                return `${(views / 1000).toFixed(1).replace(/\.0$/, '')}천`;
+                return `${(views / 1000).toFixed(0)}K`; // 천 회
             } else {
-                return `${views}`;
+                return `${views}`; 
             }
         }
         let simpleViews = formatViews(videoInfo.views);
@@ -87,15 +87,15 @@ async function createVideoItem(videoList) {
             const yearsAgo = Math.floor(monthsAgo / 12);
 
             if (daysAgo === 0) {
-                return "오늘";
+                return "today";
             } else if (daysAgo === 1) {
-                return "어제";
+                return "yesterday";
             } else if (monthsAgo < 1) {
-                return `${daysAgo}일 전`;
+                return `${daysAgo} days ago`;
             } else if (monthsAgo < 12) {
-                return `${monthsAgo}개월 전`;
+                return `${monthsAgo} months ago`;
             } else {
-                return `${yearsAgo}년 전`;
+                return `${yearsAgo} years ago`;
             }
         }
         let uploadTimeAgo = calculateTimeAgo(videoInfo.upload_date);
@@ -115,7 +115,7 @@ async function createVideoItem(videoList) {
                         <a href='${videoURL}'> ${videoInfo.video_title}</a>
                     </h3>
                     <a href="${channelURL}">${videoInfo.video_channel}</a>
-                    <p>조회수 ${simpleViews}회 · ${uploadTimeAgo}</p>
+                    <p>Views ${simpleViews} • ${uploadTimeAgo}</p>
                 </div>
             </div>
         </div>
