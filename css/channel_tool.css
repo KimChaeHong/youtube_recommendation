@@ -341,19 +341,19 @@ a{
 .sorting-buttons button{
     cursor: pointer;
     border-radius: 7px;
-    background-color: white;
-    color:black;
+    background-color: #212121;
+    color:white;
     margin:2px;
     padding:5px 12px 5px 12px;
     font-size: 15px;
     border-style: none;
 }
 
-/*수정 필요 - 효과 적용이 안됨
-.sorting-button.clicked {
-    background-color: black;
-    color: white;
-} */
+/*수정 필요 - 효과 적용이 안됨*/
+.sorting-button.clicked{
+    background-color: white;
+    color: black;
+} 
 
 #feed {
     display: flex;
@@ -448,4 +448,83 @@ a{
     height: 100%;
     object-fit: cover;
     cursor: pointer;
+}
+.img-cover{
+    position: absolute;
+    top: 80%;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    cursor: pointer;
+    align-items: center;
+    background: rgba(30, 30, 30, 0.9);
+}
+.img-cover-info{
+    display: flex;
+    justify-content: space-between;
+    padding : 5px;
+}
+.img-cover-info img{
+    padding: 5px 0 2px 6px;
+    width: 20px;
+    height: auto;
+    
+}
+.playlist-info{
+    margin: 10px;
+}
+
+.all-playlist{
+    margin : 16px 0 0 10px;
+    color:#AAA
+}
+
+/*8.3 신지수 커뮤니티, 채널, 어바웃 마무리*/
+/*커뮤니티, 채널*/
+.channel-community,
+.channel-channels{
+    color:white;
+    margin:50px;
+    display: none;
+}
+/*어바웃*/
+.channel-about{
+    display: none;
+    margin:50px;
+    color: white;
+}
+.channel-about-grid{
+    display: grid;
+    grid-template-areas:
+            "about-explain about-static"
+            "about-link about-static";
+}
+
+.about-explain{
+    border-bottom: 0.1px #AAA solid;
+    padding-bottom: 20px;
+    grid-area: about-explain;
+}
+.about-link{
+    grid-area: about-link;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    border-bottom: 0.1px #AAA solid;
+}
+.about-static{
+    grid-area: about-static;
+    padding-bottom: 10px;
+    margin: 30px 0 0 80px;
+    width: 60%;
+    height: auto;
+}
+.about-static div{
+    border-bottom: 0.1px #AAA solid;
+    padding: 15px 0 15px 0;
+}
+.about-static span svg{
+    margin: 15px 0 15px 0;
+}
+.about-static span img{
+    margin: 15px 0 15px 30px;
 }
