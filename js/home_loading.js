@@ -5,8 +5,8 @@ let ytLogo = document.getElementById("yt-logo");
 let sidebarMiniHome = document.getElementById("sidebar-mini-home");
 
 ytLogo.addEventListener("click", function () {
-    let feed = document.getElementById("feed");
-    feed.innerHTML = "";
+    let contents = document.getElementById("contents");
+    contents.innerHTML = "";
     let searchInput = document.getElementById("searchInput");
     searchInput.value = "";
     
@@ -14,8 +14,8 @@ ytLogo.addEventListener("click", function () {
 });
 
 sidebarMiniHome.addEventListener("click", function () {
-    let feed = document.getElementById("feed");
-    feed.innerHTML = "";
+    let contents = document.getElementById("contents");
+    contents.innerHTML = "";
     let searchInput = document.getElementById("searchInput");
     searchInput.value = "";
     
