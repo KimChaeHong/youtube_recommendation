@@ -1,0 +1,75 @@
+/* 김채홍 탑메뉴 css 7.25 */
+#top-menu {
+    background-color: #212121;
+    width: 100%;
+    position: fixed;
+    top: 56px;
+    right: 0px;
+    left: 65px;
+    z-index: 1;
+    
+}
+/* 요소 줄바꿈 없애기 김채홍 08.01 */
+.item-border {
+    display: flex;
+    white-space: nowrap;
+    
+}
+ /* 공통된 css 하나로 묶음 허유미 7.27 */
+.top-border,
+.bottom-border {
+    width: 100%;   /* 속성변경 허유미 7.27 */
+    height: 1px;
+    background: #303030;
+}
+
+/* 간격 조정 추가 허유미 7.31 */
+/* 간격 조정 .item 요소로 옮김 김채홍 7.28 */
+/* .item-border span:first-child {
+    margin-left: 30px;
+} */
+
+/* 아이템에 마우스 올렸을 시 색상과 배경색상 변경 김채홍 7.26 */
+.item:hover {
+    background-color: white;
+    color: #303030;
+    cursor: pointer;  /* 요소 추가 허유미 7.27 */
+}
+
+.item {
+    display: inline-flex;
+    padding: 8px 12px;
+    margin: 10px 5px 10px 5px;
+    gap: 10px;
+    
+    border-radius: 32px;
+    border: 0.3px solid #AAA;
+    background: #212121;
+
+    color:  #FFF;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    
+}
+
+/* icon 추가 김채홍 08.01 */
+.item-border{
+    overflow : hidden;
+}
+
+.icon{
+    display: inline-flex;
+    padding: 8px 12px;
+    margin: 10px 5px 10px 5px;
+    gap: 10px;
+    width: 16px;
+    justify-content: center;
+    align-items: center;
+    
+    background: rgba(33, 33, 33, 0.90);
+    position: sticky;
+    left: 50px;
+}
