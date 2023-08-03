@@ -1,4 +1,3 @@
-
 // 처음 화면 로드 시 전체 비디오 리스트 가져오기
 getVideoList().then(createVideoItem);
 
@@ -63,6 +62,7 @@ async function createVideoItem(videoList) {
     getVideoInfo(video.video_id)
   );
   let videoInfoList = await Promise.all(videoInfoPromises);
+  
   //채널명으로 필터링
   let filteredVideoList = videoInfoList.filter(
     (videoInfo) => videoInfo.video_channel === channelName
@@ -72,26 +72,45 @@ async function createVideoItem(videoList) {
   let channelInfo = await getChannelInfo();
 
   //채널정보 페이지에추가
-  // channelInfoItems += `
+  channelInfoItems += `
+  <div class="channel-profile">
+  <div>
+  <img src='${channelInfo.channel_profile}' alt="">
+  </div>
 
-  //   `;
+  <div>
+  <div class="chanelname">
+  ${channelInfo.channel_name}</div> 
 
-  // channelInfoContainer.innerHTML = channelInfoItems;
+  <div class="subsc-count">${(channelInfo.subscribers)} subscribers</div>
+  </div>
+  </div>
+<div class="subscribes__box">
+  <button class="subsc-btn">SUBSCRIBES</button>
+  </div>
+  </div>
+
+    `;
+
+  channelInfoContainer.innerHTML = channelInfoItems;
 
   // 대표영상정보 페이지에 추가
   let masterVideo = filteredVideoList[0];
   bigVideoItem += `
-                <div class="channel__big__video">
-                  <video>
-                  <source src='${masterVideo.video_link}' type="video/mp4"> 
-                  </video>
-                </div>
-                <div class="big__video__info">
-                    <h5>${masterVideo.video_title}</h5>
-                    <p>${masterVideo.views} views. ${masterVideo.upload_date}</p>
-                    <p>${masterVideo.video_detail}</p>
-                </div>
-    
+    <div class="s-video">
+    <video controls autoplay muted>
+      <source src='${masterVideo.video_link}' type="video/mp4" > 
+    </video>
+  </div>
+  <div class="big__video__info">
+  <div class="video-title">${masterVideo.video_title}</div><br>
+  <div class="video-time">
+    <sapn class="views">${masterVideo.views} views.</sapn>
+    <sapn class="upload-date">${masterVideo.upload_date}</sapn>
+    </div><br>
+    <div class="video-detail">${masterVideo.video_detail}</div>
+    </div>
+  </div>
     `;
 
   channelBigVideoBox.innerHTML = bigVideoItem;
@@ -105,16 +124,24 @@ async function createVideoItem(videoList) {
     let videoURL = `./video?id=${videoId}"`;
 
     playlistItems += `
-    <div class="channel__small__video__box">
-      <div class="video__thumbnail">
+
+    <button class="x-video">
+      <div class="s-vedio">
+        <div class="thumbnail-home">
           <img src="${filteredVideoList[i].image_link}" alt="">
+        </div>
       </div>
-      <div class="video__info">
-          <h4>${filteredVideoList[i].video_title}</h4>
-          <p>${channelName}</p>
-          <p>${filteredVideoList[i].views} views. ${filteredVideoList[i].upload_date}</p>
+
+      <div class="s-vedio-info">
+        <div class="s-vedio-info-content"> 
+          <a class="s-thumb-title">${filteredVideoList[i].video_title}</a>
+          <a class="s-chanelname">${channelName}</a>
+          <a class="s-views">${filteredVideoList[i].views} views. ${filteredVideoList[i].upload_date}</a>
+        </div>
       </div>
-    </div>
+    </button>
+
+    
       `;
   }
 
