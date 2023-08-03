@@ -161,19 +161,20 @@
             
             <div id="content">
                 <div id="video">
-
+                    <a href="https://www.youtube.com/watch?v=JXl4QgYUi9c&t=1s"></a>
                     <div id="thumnail">
                         <div id="thumnail-images">
+                            <img id="video-img" src='${videoInfo.image_link}' > 
                         </div>
                     </div>
-                    
+                    </a>
                     <div id="video-text">
                         <ul>
-                            <li id="video-name">메이플 육성 난이도 최상 에반 키우기</li>
+                            <li id="video-name"><a href='${videoURL}'> ${videoInfo.video_title}</a></li>
                             
                             <div id="channel-desc">
-                                <li id="chnnel-name">채호이의 메이플세상</li>
-                                <li id="channel-views">조회수 : 2323만회</li>
+                                <li id="chnnel-name"><a href="${channelURL}">${videoInfo.video_channel}</a></li>
+                                <li id="channel-views"><p>${videoInfo.views}.${videoInfo.upload_date}</p></li>
                             </div>
                             
                         </ul>

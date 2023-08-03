@@ -69,9 +69,9 @@ body {
     height: 40px;
 }
 
+/* 일부 속성 삭제 허유미 8.2 */
 .search-bar {
     width: 358px;
-    height: 25px;
     padding: 6px;
     border-radius: 2px 0px 0px 2px;
     border: 1px solid #303030;

@@ -1,7 +1,7 @@
+/* 바디 배경 변경 8.2 김채홍 */
 body {
-    background-color: #000;
+    background: #181818;
 }
-
 .search {
     /* width: 1440px; */
     height: 56px;
@@ -161,10 +161,10 @@ body {
 }
 
 
-
+/* 높이 삭제 8.2 김채홍 */
 .primary {
     width: 664px;
-    height: 968px;
+
     padding: 24px 0px 0px 24px;
     justify-content: flex-end;
     align-items: flex-start;
@@ -172,10 +172,10 @@ body {
     background: #181818;
 }
 
+/* 높이 삭제 08.02 김채홍 */
 .secondary {
     /* display: flex; */
     width: 426px;
-    height: 968px;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
@@ -184,7 +184,7 @@ body {
     background: #181818;
 
 }
-
+/* content 하위 태그 css 전체 수정 08.02 김채홍 */
 #content {
     display: flex;
     padding: 24px 24px 0px 0px;
@@ -198,14 +198,19 @@ body {
     display: flex;
     padding-top: 8px;
     align-items: flex-start;
-   
-    border: 0.3px solid var(--gray-color, #AAA);
+
     /* border: 1px solid beige; */
+}
+
+#thumnail-images img{
+    width: 170px;
+    height: 106px;
+    align-items: flex-start;   
 }
 
 #thumnail {
     display: flex;
-    padding-right: 0px;
+    padding-right: 8px;
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
@@ -568,6 +573,7 @@ ul {
 }
 
 /* 세컨더리 컨텐츠 css 미완 7.31 김채홍 */
+/* 세컨더리 컨텐츠 css 완  8.02 김채홍 */
 .feed{
     flex-direction: column;
 }
