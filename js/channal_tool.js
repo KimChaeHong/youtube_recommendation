@@ -1,4 +1,4 @@
-//툴바 - 비디오, 플레이 리스트 추가, 수정 8.2 신지수
+//8.1 신지수 툴바 영역별로 카테고리 생성
 // 클릭 효과 추가
 const menuItems = document.querySelectorAll('.toolbar-menu');
 
@@ -39,6 +39,12 @@ menuItems.forEach(menu => {
     if (this.dataset.menu === "VIDEOS") {
       videosSection.style.display = 'block';
       sortingButtonsDiv.style.display = 'block';
+      //"최신순"버튼을 기본으로 적용
+      const sortingButtons = document.querySelectorAll('.sorting-button');
+      sortingButtons.forEach(button => button.classList.remove("clicked"));
+      const latestButton = document.getElementById('latestButton');
+      latestButton.classList.add("clicked");
+
     } else if (this.dataset.menu === "PLAYLISTS") {
       playlistsSection.style.display = 'block';
     } else if (this.dataset.menu === "COMMUNITY") {
@@ -50,20 +56,35 @@ menuItems.forEach(menu => {
     }
   });
 });
+// 클릭 이벤트
 
-
-
-// 클릭 이벤트 여기까지
-// 클릭 이벤트 여기까지
-// 클릭 이벤트 여기까지
-
+//8.3 신지수 클릭 이벤트 문제 수정-해결
 // 최신순~
-// 최신순~
-document.getElementById('latestButton').addEventListener('click', sortByLatest);
-document.getElementById('popularButton').addEventListener('click', sortByPopular);
-document.getElementById('dateButton').addEventListener('click', sortByDate);
+document.getElementById('latestButton').addEventListener('click', async function() {
+  chang_btn(event); // 버튼 클릭 효과 함수 호출
+  await sortByLatest(); // 최신순 정렬 함수 호출
+});
+document.getElementById('popularButton').addEventListener('click', async function() {
+  chang_btn(event);
+  await sortByPopular();
+});
+document.getElementById('dateButton').addEventListener('click', async function() {
+  chang_btn(event);
+  await sortByDate();
+});
+// 정렬 버튼 클릭 효과 함수
+function chang_btn(event) {
+  var sortingButtons = document.querySelectorAll('.sorting-button');
+  sortingButtons.forEach(function(button, i){
+    if (button === event.target) {
+      button.classList.add("clicked");
+    } else {
+      button.classList.remove("clicked");
+    }
+  });
+}
 
-
+//정렬 기준
 async function sortByLatest() {
     const videoList = await getVideoList();
     const videoListContainer = document.getElementById('feed');
@@ -91,34 +112,10 @@ async function sortByDate() {
     });
     createVideoItem(sortedList);
 }
-
-
-//정렬 버튼 효과 -적용안됨 이슈
-// var sortingButtons = document.querySelectorAll('.sorting-button');
-
-// function handleClick(event) {
-//   sortingButtons.forEach(button => {
-//     if (button === event.target) {
-//       button.classList.toggle("clicked");
-//     } else {
-//       button.classList.remove("clicked");
-//     }
-//   });
-// }
-
-// function init() {
-//   sortingButtons.forEach(button => {
-//     button.addEventListener("click", handleClick);
-//   });
-// }
-
-// init();
-
-//최신순~
 // 최신순~ 여기까지
 
 
-
+//api 동영상 불러오기
 getVideoList().then(createVideoItem);
 getVideoList().then(createPlaylistItem);
 
@@ -186,7 +183,6 @@ function calculateTimeAgo(uploadDate) {
     return `${yearsAgo}years ago`;
   }
 }
-
 //조회수 계산
 function formatViews(views) {
   if (views < 1000) {
@@ -201,7 +197,7 @@ function formatViews(views) {
 }
 
 
-// 비디오 동영상
+// html 비디오
 async function createVideoItem(videoList) {
   let feed = document.getElementById("feed");
   let feedItems = "";
@@ -240,8 +236,8 @@ async function createVideoItem(videoList) {
   feed.innerHTML = feedItems;
 }
 
-
-// 플레이 리스트 동영상
+//8.2 신지수 플레이 리스트에 동영상 추가+수정
+// html 플레이 리스트
 async function createPlaylistItem(videoList) {
   let feedList = document.getElementById("feed-list");
   let feedListItems = "";
@@ -251,10 +247,6 @@ async function createPlaylistItem(videoList) {
   );
   let videoInfoList = await Promise.all(videoInfoPromises);
 
-  // // 재생목록 정보 추가
-  // feedListItems += `
-  //   <div class="channel-playlists-info">생성된 재생목록</div>
-  // `;
 
   for (let i = 9; i<12; i++) {
     let videoId = videoList[i].video_id;
@@ -267,9 +259,16 @@ async function createPlaylistItem(videoList) {
         <a href="./video.html?id=${videoId}">
         <div class="playlist-thumbnail-item">
           <img src="${videoInfo.image_link}">
+          <div class="img-cover">
+            <div class="img-cover-info">
+              <div><img src="../svg/bropdown.svg"></div>
+              <div>동영상 5개</div>
+            </div>
+          </div>
         </div>
         <div>
           <div class="playlist-info">${videoInfo.video_tag}</div>
+          <div class="all-playlist">모든 재생목록 보기</div>
         </div>
         </a>
       </div>
@@ -278,3 +277,11 @@ async function createPlaylistItem(videoList) {
 
   feedList.innerHTML = feedListItems;
 }
+
+
+
+
+
+
+
+
