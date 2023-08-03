@@ -394,13 +394,15 @@
     </nav>
 
     <!--채널-->
-    <div class="channel">
+    <div class="channel" id="1">
         <div class="channel-cover">
             <img src="../svg/channel-cover.png" alt="image">
+            <!--8.3 이미지 테스트 중-->
+            <!-- <img src="https://storage.googleapis.com/oreumi.appspot.com/1_profile.jpg"> -->
         </div>
         <div class="channel-title">
             <div class="channel-profile">
-                <div><img src="../svg/oreumi.png"></div>
+                <div class="channel-avactor"><img src="../svg/oreumi.png"></div>
                 <div>
                     <div class="chanelname">채널 이름</div>
                     <div class="subsc-count">구독자 수</div>
@@ -424,7 +426,6 @@
             </div>
         </div>
 
-    <!--툴바 메뉴 구현 작업 8.1 신지수-->
         <!--동영상-->
         <div class="channal_content">
             <!--홈 영역-->
@@ -445,13 +446,35 @@
             </div>
             <div class="channel-community">아직 채널에서 아무 것도 게시하지 않았습니다.</div>
             <div class="channel-channels">이 채널에는 다른 채널이 표시되지 않습니다.</div>
-            <div class="channel-about"></div>
+            <div class="channel-about">
+                <div class="channel-about-grid">
+                    <div class="about-explain">설명<br><br>
+                        <div>나는 오르미 2기!</div>
+                    </div>
+                    <div class="about-static">
+                        <div>통계</div>
+                        <div>가입일:2023.06.19.</div>
+                        <div>조회수:23,881회</div>
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M13.18 4L13.42 5.2L13.58 6H14.4H19V13H13.82L13.58 11.8L13.42 11H12.6H6V4H13.18ZM14 3H5V21H6V12H12.6L13 14H20V5H14.4L14 3Z" fill="white"/>
+                            </svg>
+                            <img src="../svg/video-share.svg">
+                        </span>
+                    </div>
+                    <div class="about-link">링크<br><br>
+                        <div><a href="https://estfamily.career.greetinghr.com/">사이트</a></div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     
 
     <script src="../js/search.js"></script>
     <script src="../js/search_2.js"></script>
     <script src="../js/sidebar.js"></script>
+    <script src="../js/channel.js"></script>
     <script src="../js/channal_tool.js"></script>
     <!-- <script src="../js/channal_video.js"></script> -->
 

@@ -49,8 +49,8 @@ async function getChannelInfo(channelName) {
 
 // 피드 비디오 리스트 로드
 async function createVideoItem(videoList) {
-    let feed = document.getElementById("feed");
-    let feedItems = "";
+    let contents = document.getElementById("contents");
+    let contentsItems = "";
 
     let videoInfoPromises = videoList.map((video) =>
         getVideoInfo(video.video_id)
@@ -62,7 +62,7 @@ async function createVideoItem(videoList) {
         let videoInfo = videoInfoList[i];
         let channelInfo = await getChannelInfo(videoList[i].video_channel);
 
-        let channelURL = `./channel.html?channelName=${videoList[i].video_channel}"`;
+        let channelURL = `./channel_test.html?channelName=${videoList[i].video_channel}"`;
         let videoURL = `./video.html?id=${videoId}"`;
 
         // 조회수 간단하게 표현
@@ -100,18 +100,18 @@ async function createVideoItem(videoList) {
         }
         let uploadTimeAgo = calculateTimeAgo(videoInfo.upload_date);
 
-        feedItems += `
-        <div class="feed__item">
+        contentsItems += `
+        <div class="contents__item">
             <a href='${videoURL}'>
-                <div class="feed__item__thumbnail">
+                <div class="contents__item__thumbnail">
                     <img src="https://storage.googleapis.com/oreumi.appspot.com/img_${videoId}.jpg">
-                    <div class="feed__item__timebar">01:26</div>    
+                    <div class="contents__item__timebar">01:26</div>    
                 </div>
             </a>
-            <div class="feed__item__info">
-                <a href='${channelURL}'><img class="feed__item__info__avatar" src='${channelInfo.channel_profile}'></a>
-                <div class="feed__text__box">
-                    <h3 class="feed__item__info__title">
+            <div class="contents__item__info">
+                <a href='${channelURL}'><img class="contents__item__info__avatar" src='${channelInfo.channel_profile}'></a>
+                <div class="contents__text__box">
+                    <h3 class="contents__item__info__title">
                         <a href='${videoURL}'> ${videoInfo.video_title}</a>
                     </h3>
                     <a href="${channelURL}">${videoInfo.video_channel}</a>
@@ -123,7 +123,7 @@ async function createVideoItem(videoList) {
     }
 
     // 화면에 추가
-    feed.innerHTML = feedItems;
+    contents.innerHTML = contentsItems;
 }
 
 let searchBtn = document.getElementById("search-btn");
