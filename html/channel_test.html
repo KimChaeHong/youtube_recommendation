@@ -7,7 +7,7 @@
     <title>Channel</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/sidebar.css">
-    <link rel="stylesheet" href="../css/channel.css">
+    <link rel="stylesheet" href="../css/channel_tool.css">
 
     
 </head>
@@ -424,22 +424,28 @@
         </div>
 
         <!--동영상-->
-        <div class="channel-home">
-        <div class="channel-videos">
-            <div class="sorting-buttons" id="sortingButtons">
-                <button id="latestButton">최신순</button>
-                <button id="popularButton">인기순</button>
-                <button id="dateButton">날짜순</button>
-              </div>
-            <div id="feed"></div>
-        </div> <!--VIDEOS 영역-->
-        <div claa="channel-playlists"></div>
-        <div claa="channel-community"></div>
-        <div claa="channel-channels"></div>
-        <div claa="channel-about"></div>
+        <div class="channal_content">
+            <!--홈 영역-->
+            <div class="channel-home"></div>
+            <!--VIDEOS 영역-->
+            <div class="channel-videos">
+                <div class="sorting-buttons" id="sortingButtons">
+                    <button class="sorting-button" id="latestButton">최신순</button>
+                    <button class="sorting-button" id="popularButton">인기순</button>
+                    <button class="sorting-button" id="dateButton">날짜순</button>
+                </div>
+                <div id="feed"></div>
+            </div> 
+            <!--플레이 리스트 영역-->
+            <div class="channel-playlists">
+                <div id="feed-list"></div>
+            </div>
+            <div class="channel-community">아직 채널에서 아무 것도 게시하지 않았습니다.</div>
+            <div class="channel-channels">이 채널에는 다른 채널이 표시되지 않습니다.</div>
+            <div class="channel-about"></div>
+        </div>
 
-
-    </div>
+    
 
     <script src="../js/search.js"></script>
     <script src="../js/search_2.js"></script>
