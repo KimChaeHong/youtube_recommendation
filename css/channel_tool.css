@@ -177,6 +177,14 @@ body {
     cursor: pointer;
 }
 
+#sidebar-mini-home{
+    flex-direction: column;
+    text-align: center;
+}
+#sidebar-mini-home svg{
+    margin-right: 19px;
+}
+
 #sidebar-mini span {
     padding: 15px 0 3px;
     flex-direction: column;
