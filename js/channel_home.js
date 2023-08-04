@@ -76,8 +76,41 @@ async function createVideoItem(videoList) {
   //채널 정보 가져오기
   let channelInfo = await getChannelInfo();
 
-  //채널정보 페이지에추가
+    // // 조회수 간단하게 표현 from channel_search.js
+    function smartViews(views) {
+      if (views >= 1000000) {
+          return `${(views / 1000000).toFixed(1).replace(/\.0$/, '')}M`; // 백만 회
+      } else if (views >= 1000) {
+          return `${(views / 1000).toFixed(0)}K`; // 천 회
+      } else {
+          return `${views}`; 
+      }
+  }
+  let channelSub = smartViews(channelInfo.subscribers);
 
+  function timeAgo(uploadDate) {
+    const now = new Date();
+    const upload = new Date(uploadDate);
+    const timeDiff = now - upload;
+    const daysAgo = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const monthsAgo = Math.floor(daysAgo / 30);
+    const yearsAgo = Math.floor(monthsAgo / 12);
+
+    if (daysAgo === 0) {
+        return "today";
+    } else if (daysAgo === 1) {
+        return "yesterday";
+    } else if (monthsAgo < 1) {
+        return `${daysAgo} days ago`;
+    } else if (monthsAgo < 12) {
+        return `${monthsAgo} months ago`;
+    } else {
+        return `${yearsAgo} years ago`;
+    }
+}
+
+
+  //채널정보 페이지에추가
   //css를 위한 태그 수정 8.4 신지수
   // 버튼 구현 8.4 이준희
   channelInfoItems += `
@@ -88,7 +121,7 @@ async function createVideoItem(videoList) {
     <div class="channel-title" >
       <div>
         <div class="chanelname">${channelInfo.channel_name}</div> 
-        <div class="subsc-count">${(channelInfo.subscribers)} subscribers</div>
+        <div class="subsc-count">${(channelSub)} subscribers</div>
       </div> 
       <button id = "subBtn" class="subsc-btn" type = "button" onclick = 'change()' >구독</button>
     </div>
@@ -99,6 +132,10 @@ async function createVideoItem(videoList) {
 
   // 대표영상정보 페이지에 추가
   let masterVideo = filteredVideoList[0];
+
+  let bigVideoViews = smartViews(masterVideo.views);
+  let loadTimeAgo = timeAgo(masterVideo.upload_date);
+
   bigVideoItem += `
     <div class="s-video">
     <video controls autoplay muted>
@@ -108,8 +145,8 @@ async function createVideoItem(videoList) {
   <div class="big__video__info">
   <div class="video-title">${masterVideo.video_title}</div><br>
   <div class="video-time">
-    <sapn class="views">${masterVideo.views} views.</sapn>
-    <sapn class="upload-date">${masterVideo.upload_date}</sapn>
+    <sapn class="views">${bigVideoViews} views.</sapn>
+    <sapn class="upload-date">${loadTimeAgo}</sapn>
     </div><br>
     <div class="video-detail">${masterVideo.video_detail}</div>
     </div>
@@ -125,6 +162,8 @@ async function createVideoItem(videoList) {
     let videoId = filteredVideoList[i].video_id;
     let videoInfo = filteredVideoList[i];
     let videoURL = `./video?id=${videoId}"`;
+    let listVideoViews = smartViews(filteredVideoList[i].views);
+    let listUploadTimeAgo = timeAgo(filteredVideoList[i].upload_date);
 
     playlistItems += `
 
@@ -139,7 +178,7 @@ async function createVideoItem(videoList) {
         <div class="s-vedio-info-content"> 
           <a class="s-thumb-title">${filteredVideoList[i].video_title}</a>
           <a class="s-chanelname">${channelName}</a>
-          <a class="s-views">${filteredVideoList[i].views} views. ${filteredVideoList[i].upload_date}</a>
+          <a class="s-views">${listVideoViews} views. ${listUploadTimeAgo}</a>
         </div>
       </div>
     </button>
@@ -154,18 +193,8 @@ async function createVideoItem(videoList) {
 // 구독 버튼 구현 8.4 이준희
 function change() {
   const subs = document.getElementById('subBtn');
-  subs.innerText = '구독 중'
+  subs.innerText = 'subscribing'
   subs.style.backgroundColor = "#303030"
-
-  subs.addEventListener("click", function() {
-    if(subs.innerText === '구독') {
-        subs.innerText = '구독중';
-        subs.style.backgroundColor = "#303030"
-    } 
-    elif (subs.innerText === '구독중') 
-    subs.innerText ='구독';
-    subs.style.backgroundColor = "#cc0000"
-  });
 }
 
 
