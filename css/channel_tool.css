@@ -442,7 +442,7 @@ a{
     color:#fff;
 }
 
-/* 공통 배경 속성 추가 0728 허유미 */
+/* 공통 배경 속성 추가 7.28 허유미 */
 .channel-cover,
 .channel_information,
 .channel-toolbar {
@@ -553,14 +553,36 @@ a{
 
 .channel-search{
     display: flex;
-    margin : 20px;
+    margin : 18px; /* 요소 변경 허유미 8.4 */
     align-items: center;
 }
 .c-search-icon img,
 .c-search-btn img {
     width: 20px;
     height: 20px;
+    cursor: pointer; /* 요소 추가 허유미 8.4 */
 }
+
+/* 요소 추가 허유미 8.4 */
+.c-search-icon {
+    margin-right: 10px;
+}
+
+.channel-search input {
+    background-color: inherit;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    font-size: 15px;
+    padding: 0 0 3px 0;
+}
+
+.channel-search input:focus {
+    outline: none;
+}
+
+
+
 
 /*비디오*//*비디오*//*비디오*/
 .channal_content{
