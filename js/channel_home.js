@@ -1,5 +1,5 @@
 // 처음 화면 로드 시 전체 비디오 리스트 가져오기
-getVideoList().then(createVideoItem);
+getVideoChList().then(createVideoChItem);
 
 // 현재 주소에서 채널명 가져오기
 let currentURL = window.location.href;
@@ -8,14 +8,14 @@ let channelName = url.searchParams.get("channelName"); //채널명
 channelName = "oreumi";
 
 // 비디오 리스트 정보
-async function getVideoList() {
-  let response = await fetch("https://oreumi.appspot.com/video/getVideoList");
+async function getVideoChList() {
+  let response = await fetch("https://oreumi.appspot.com/video/getVideoChList");
   let videoListData = await response.json();
   return videoListData;
 }
 
 // 각 비디오 정보
-async function getVideoInfo(videoId) {
+async function getVideoChInfo(videoId) {
   let url = `https://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
   let response = await fetch(url);
   let videoData = await response.json();
@@ -23,7 +23,7 @@ async function getVideoInfo(videoId) {
 }
 
 // 채널 정보
-async function getChannelInfo() {
+async function getVideoChannelInfo() {
   let url = `https://oreumi.appspot.com/channel/getChannelInfo`;
 
   let response = await fetch(url, {
@@ -48,10 +48,8 @@ async function getChannelVideo() {
 }
 
 // 피드 내용 로드
-async function createVideoItem(videoList) {
-  let channelInfoContainer = document.getElementById(
-    "channel__info__container"
-  ); // 채널인포 컨테이너
+async function createVideoChItem(videoList) {
+  let channelInfoContainer = document.getElementById("channel-top"); // 채널인포 컨테이너
   let channelBigVideoBox = document.getElementById("channel__big__video__box"); // 대표영상 컨테이너
 
   let channelInfoItems = ""; //채널인포
@@ -59,7 +57,7 @@ async function createVideoItem(videoList) {
 
   // 각 비디오들 정보 가져오기
   let videoInfoPromises = videoList.map((video) =>
-    getVideoInfo(video.video_id)
+    getVideoChInfo(video.video_id)
   );
   let videoInfoList = await Promise.all(videoInfoPromises);
   
@@ -74,7 +72,7 @@ async function createVideoItem(videoList) {
   
 
   //채널 정보 가져오기
-  let channelInfo = await getChannelInfo();
+  let channelInfo = await getVideoChannelInfo();
 
     // // 조회수 간단하게 표현 from channel_search.js
     function smartViews(views) {
@@ -114,18 +112,23 @@ async function createVideoItem(videoList) {
   //css를 위한 태그 수정 8.4 신지수
   // 버튼 구현 8.4 이준희
   channelInfoItems += `
-  <div class="channel-profile">
-    <div>
-      <img src='${channelInfo.channel_profile}' alt="">
-    </div>
-    <div class="channel-title" >
-      <div>
-        <div class="chanelname">${channelInfo.channel_name}</div> 
-        <div class="subsc-count">${(channelSub)} subscribers</div>
-      </div> 
-      <button id = "subBtn" class="subsc-btn" type = "button" onclick = 'change()' >구독</button>
-    </div>
+  <div class="channel-cover">
+    <img src='${channelInfo.channel_banner}' alt="">
   </div>
+  <div id="channel__info__container">
+    <div class="channel-profile">
+      <div>
+        <img src='${channelInfo.channel_profile}' alt="">
+      </div>
+      <div class="channel-title" >
+        <div>
+          <div class="chanelname">${channelInfo.channel_name}</div> 
+          <div class="subsc-count">${(channelInfo.subscribers)} subscribers</div>
+        </div> 
+        <button id = "subBtn" class="subsc-btn" type = "button" onclick = 'change()' >구독</button>
+      </div>
+    </div>
+  </div> 
     `;
 
   channelInfoContainer.innerHTML = channelInfoItems;
@@ -182,11 +185,8 @@ async function createVideoItem(videoList) {
         </div>
       </div>
     </button>
-
-    
       `;
   }
-
   playlistContainer.innerHTML = playlistItems;
 }
 
