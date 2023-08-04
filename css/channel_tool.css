@@ -557,7 +557,7 @@ a{
     align-items: center;
 }
 .c-search-icon img,
-.c-search-btn img {
+.c-scroll-btn img {
     width: 20px;
     height: 20px;
     cursor: pointer; /* 요소 추가 허유미 8.4 */
