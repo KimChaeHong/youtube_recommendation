@@ -11,6 +11,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+
 }
 
 
@@ -52,12 +53,13 @@ body {
     padding-top: 8px;
     align-items: flex-start;
 
-    /* border: 1px solid beige; */
+  
 }
-
+/* 이미지크기 수정 08.04 김채홍 */
 #thumnail-images img{
-    width: 170px;
-    height: 106px;
+    width: 168px;
+    height:  94px;;
+    flex-shrink: 0;
     align-items: flex-start;   
 }
 
@@ -69,9 +71,11 @@ body {
     gap: 10px;
 }
 
+/* 크기 수정 08.04 김채홍*/
 #thumnail-images {
-    width: 168px;
-    height: 94px;
+    width: 170px;
+    height: 106px;
+    /* border: 1px solid beige; */
 }
 
 #video-text {
