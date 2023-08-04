@@ -72,24 +72,20 @@ async function createVideoItem(videoList) {
   let channelInfo = await getChannelInfo();
 
   //채널정보 페이지에추가
+  //css를 위한 태그 수정 8.4 신지수
   channelInfoItems += `
   <div class="channel-profile">
-  <div>
-  <img src='${channelInfo.channel_profile}' alt="">
+    <div>
+      <img src='${channelInfo.channel_profile}' alt="">
+    </div>
+    <div class="channel-title" >
+      <div>
+        <div class="chanelname">${channelInfo.channel_name}</div> 
+        <div class="subsc-count">${(channelInfo.subscribers)} subscribers</div>
+      </div> 
+      <div class="subsc-btn">SUBSCRIBES</div>
+    </div>
   </div>
-
-  <div>
-  <div class="chanelname">
-  ${channelInfo.channel_name}</div> 
-
-  <div class="subsc-count">${(channelInfo.subscribers)} subscribers</div>
-  </div>
-  </div>
-<div class="subscribes__box">
-  <button class="subsc-btn">SUBSCRIBES</button>
-  </div>
-  </div>
-
     `;
 
   channelInfoContainer.innerHTML = channelInfoItems;

@@ -5,14 +5,14 @@ getVideoList().then(createVideoItem);
 
 // 비디오 리스트 정보
 async function getVideoList() {
-    let response = await fetch("https://oreumi.appspot.com/video/getVideoList");
+    let response = await fetch("http://oreumi.appspot.com/video/getVideoList");
     let videoListData = await response.json();
     return videoListData;
 }
 
 // 각 비디오 정보
 async function getVideoInfo(videoId) {
-    let url = `https://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
+    let url = `http://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
     let response = await fetch(url);
     let videoData = await response.json();
     return videoData;
@@ -29,7 +29,7 @@ async function getChannelInfo(channelName) {
         return channelCache[channelName];
     }
 
-    let url = `https://oreumi.appspot.com/channel/getChannelInfo`;
+    let url = `http://oreumi.appspot.com/channel/getChannelInfo`;
 
     let response = await fetch(url, {
         method: "POST",
@@ -62,8 +62,8 @@ async function createVideoItem(videoList) {
         let videoInfo = videoInfoList[i];
         let channelInfo = await getChannelInfo(videoList[i].video_channel);
 
-        let channelURL = `./html/channel_test.html?channelName=${videoList[i].video_channel}"`;
-        let videoURL = `./html/video.html?id=${videoId}"`;
+        let channelURL = `./channel_test.html?channelName=${videoList[i].video_channel}"`;
+        let videoURL = `./video.html?id=${videoId}"`;
 
         // 조회수 간단하게 표현
         function formatViews(views) {
