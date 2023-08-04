@@ -876,13 +876,28 @@ a{
     margin-top:8px;
 }
 
+/* 텍스트 색 변경 8.4 이준희 */
 .s-thumb-title{
-    font-size: 20px;
-    margin-top:6px;
-    margin-bottom:6px;
+    color: var(--white-color, #FFF);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
-.s-chanelname,
+
+/* 텍스트 색 변경 8.4 이준희 */
+.s-chanelname{
+    color: var(--gray-color, #AAA);
+    
+}
+
+/* 텍스트 색 정리 8.4 이준희 */
 .s-views{
-    color:#AAA;
-    font-size: 16px;
+    color: var(--gray-color, #AAA);
+font-family: Roboto;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
