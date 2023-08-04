@@ -444,7 +444,7 @@ a{
 
 /* 공통 배경 속성 추가 7.28 허유미 */
 .channel-cover,
-.channel_information,
+#channel_information,
 .channel-toolbar {
     background-color: #181818;
 }
