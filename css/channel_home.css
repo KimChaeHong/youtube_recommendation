@@ -57,10 +57,7 @@
 
 
 .play-list{
-    margin-left: 80px;
-    margin-right: 80px;
-    margin-top: 35px;
-    margin-bottom: 35px;
+    margin:35px 50px 35px 47px;/*마진값 정리, 다시 조정 8.4신지수*/
     overflow: hidden;
     /* 라인을 맞추기 위해 페딩 옵션 추가 8.3  이준희*/
     padding: 0px 65px;
