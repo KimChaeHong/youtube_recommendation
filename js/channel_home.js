@@ -9,14 +9,14 @@ channelName = "oreumi";
 
 // 비디오 리스트 정보
 async function getVideoList() {
-  let response = await fetch("http://oreumi.appspot.com/video/getVideoList");
+  let response = await fetch("https://oreumi.appspot.com/video/getVideoList");
   let videoListData = await response.json();
   return videoListData;
 }
 
 // 각 비디오 정보
 async function getVideoInfo(videoId) {
-  let url = `http://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
+  let url = `https://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
   let response = await fetch(url);
   let videoData = await response.json();
   return videoData;
@@ -24,7 +24,7 @@ async function getVideoInfo(videoId) {
 
 // 채널 정보
 async function getChannelInfo() {
-  let url = `http://oreumi.appspot.com/channel/getChannelInfo`;
+  let url = `https://oreumi.appspot.com/channel/getChannelInfo`;
 
   let response = await fetch(url, {
     method: "POST",
@@ -41,7 +41,7 @@ async function getChannelInfo() {
 // 채널 내 영상정보
 async function getChannelVideo() {
   let response = await fetch(
-    `http://oreumi.appspot.com/video/getChannelVideo?video_channel=${channelName}`
+    `https://oreumi.appspot.com/video/getChannelVideo?video_channel=${channelName}`
   );
   let videoListData = await response.json();
   return videoListData;
@@ -65,14 +65,21 @@ async function createVideoItem(videoList) {
   
   //채널명으로 필터링
   let filteredVideoList = videoInfoList.filter(
-    (videoInfo) => videoInfo.video_channel === channelName
+    (videoInfo) => 
+    videoInfo.video_channel === channelName
   );
+
+  // 조회수 높은 것부터 출력되게 수정 8.4 이준희
+  filteredVideoList.sort((a,b) => b.views - a.views);
+  
 
   //채널 정보 가져오기
   let channelInfo = await getChannelInfo();
 
   //채널정보 페이지에추가
+
   //css를 위한 태그 수정 8.4 신지수
+  // 버튼 구현 8.4 이준희
   channelInfoItems += `
   <div class="channel-profile">
     <div>
@@ -83,7 +90,7 @@ async function createVideoItem(videoList) {
         <div class="chanelname">${channelInfo.channel_name}</div> 
         <div class="subsc-count">${(channelInfo.subscribers)} subscribers</div>
       </div> 
-      <div class="subsc-btn">SUBSCRIBES</div>
+      <button id = "subBtn" class="subsc-btn" type = "button" onclick = 'change()' >구독</button>
     </div>
   </div>
     `;
@@ -143,3 +150,22 @@ async function createVideoItem(videoList) {
 
   playlistContainer.innerHTML = playlistItems;
 }
+
+// 구독 버튼 구현 8.4 이준희
+function change() {
+  const subs = document.getElementById('subBtn');
+  subs.innerText = '구독 중'
+  subs.style.backgroundColor = "#303030"
+
+  subs.addEventListener("click", function() {
+    if(subs.innerText === '구독') {
+        subs.innerText = '구독중';
+        subs.style.backgroundColor = "#303030"
+    } 
+    elif (subs.innerText === '구독중') 
+    subs.innerText ='구독';
+    subs.style.backgroundColor = "#cc0000"
+  });
+}
+
+
