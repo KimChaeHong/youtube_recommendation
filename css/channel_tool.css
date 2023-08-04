@@ -442,7 +442,7 @@ a{
     color:#fff;
 }
 
-/* 공통 배경 속성 추가 0728 허유미 */
+/* 공통 배경 속성 추가 7.28 허유미 */
 .channel-cover,
 .channel_information,
 .channel-toolbar {
@@ -553,14 +553,36 @@ a{
 
 .channel-search{
     display: flex;
-    margin : 20px;
+    margin : 18px; /* 요소 변경 허유미 8.4 */
     align-items: center;
 }
 .c-search-icon img,
-.c-search-btn img {
+.c-scroll-btn img {
     width: 20px;
     height: 20px;
+    cursor: pointer; /* 요소 추가 허유미 8.4 */
 }
+
+/* 요소 추가 허유미 8.4 */
+.c-search-icon {
+    margin-right: 10px;
+}
+
+.channel-search input {
+    background-color: inherit;
+    color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    font-size: 15px;
+    padding: 0 0 3px 3px;
+}
+
+.channel-search input:focus {
+    outline: none;
+}
+
+
+
 
 /*비디오*//*비디오*//*비디오*/
 .channal_content{
@@ -876,13 +898,28 @@ a{
     margin-top:8px;
 }
 
+/* 텍스트 색 변경 8.4 이준희 */
 .s-thumb-title{
-    font-size: 20px;
-    margin-top:6px;
-    margin-bottom:6px;
+    color: var(--white-color, #FFF);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
-.s-chanelname,
+
+/* 텍스트 색 변경 8.4 이준희 */
+.s-chanelname{
+    color: var(--gray-color, #AAA);
+    
+}
+
+/* 텍스트 색 정리 8.4 이준희 */
 .s-views{
-    color:#AAA;
-    font-size: 16px;
+    color: var(--gray-color, #AAA);
+font-family: Roboto;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
 }
