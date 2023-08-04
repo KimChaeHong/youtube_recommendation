@@ -9,43 +9,43 @@ let videoId = url.searchParams.get("id"); //채널명
 
 // 비디오 리스트 정보
 async function getVideoList() {
-    let response = await fetch("http://oreumi.appspot.com/video/getVideoList");
-    let videoListData = await response.json();
-    return videoListData;
-  }
+  let response = await fetch("http://oreumi.appspot.com/video/getVideoList");
+  let videoListData = await response.json();
+  return videoListData;
+}
 
 // 각 비디오 정보
 async function getVideoInfo(videoId) {
-    let url = `http://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
-    let response = await fetch(url);
-    let videoData = await response.json();
-    return videoData;
-  }
+  let url = `http://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
+  let response = await fetch(url);
+  let videoData = await response.json();
+  return videoData;
+}
 
 // 채널 정보
 async function getChannelInfo(channelName) {
-    let url = `http://oreumi.appspot.com/channel/getChannelInfo`;
-  
-    let response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ video_channel: channelName }),
-    });
-  
-    let channelData = await response.json();
-    return channelData;
-  }
-  
-  // 채널 내 영상정보
-  async function getChannelVideo() {
-    let response = await fetch(
-      `http://oreumi.appspot.com/video/getChannelVideo?video_channel=${channelName}`
-    );
-    let videoListData = await response.json();
-    return videoListData;
-  }
+  let url = `http://oreumi.appspot.com/channel/getChannelInfo`;
+
+  let response = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ video_channel: channelName }),
+  });
+
+  let channelData = await response.json();
+  return channelData;
+}
+
+// 채널 내 영상정보
+async function getChannelVideo() {
+  let response = await fetch(
+    `http://oreumi.appspot.com/video/getChannelVideo?video_channel=${channelName}`
+  );
+  let videoListData = await response.json();
+  return videoListData;
+}
 
 // 피드 내용 로드
 async function createVideoItem(videoList) {
@@ -151,4 +151,69 @@ async function createVideoItem(videoList) {
   }
 
   videoListDiv.innerHTML = videoListItems;
+}
+
+// 단위 변환 함수
+function convertViews(views) {
+  if (views >= 10000000) {
+    const converted = (views / 10000000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "천만"
+      : converted + "천만";
+  } else if (views >= 1000000) {
+    const converted = (views / 1000000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "백만"
+      : converted + "백만";
+  } else if (views >= 10000) {
+    const converted = (views / 10000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "만"
+      : converted + "만";
+  } else if (views >= 1000) {
+    const converted = (views / 1000).toFixed(1);
+    return converted.endsWith(".0")
+      ? converted.slice(0, -2) + "천"
+      : converted + "천";
+  } else {
+    return views.toString();
+  }
+}
+
+// 날짜 변환 함수
+function convertDate(dateString) {
+  // 파라미터로 받은 날짜를 Date 객체로 변환
+  const targetDate = new Date(dateString);
+
+  // 현재 날짜를 구하기 위해 현재 시간 기준으로 Date 객체 생성
+  const currentDate = new Date();
+
+  // 두 날짜의 시간 차이 계산 (밀리초 기준)
+  const timeDifference = currentDate - targetDate;
+
+  // 1년의 밀리초 수
+  const oneYearInMilliseconds = 31536000000;
+
+  if (timeDifference < 86400000) {
+    // 하루(24시간) 기준의 밀리초 수
+    return "오늘";
+  } else if (timeDifference < 172800000) {
+    // 이틀(48시간) 기준의 밀리초 수 (어제)
+    return "어제";
+  } else if (timeDifference < 604800000) {
+    // 일주일(7일) 기준의 밀리초 수
+    return "1주 전";
+  } else if (timeDifference < oneYearInMilliseconds) {
+    // 한 달 전 계산
+    const currentMonth = currentDate.getMonth();
+    const targetMonth = targetDate.getMonth();
+
+    if (currentMonth === targetMonth) {
+      return "1개월 전";
+    } else {
+      return `${currentMonth - targetMonth}개월 전`;
+    }
+  } else {
+    return `${Math.floor(timeDifference / oneYearInMilliseconds)}년 전`;
+  }
 }
