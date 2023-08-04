@@ -460,8 +460,11 @@
                 <!--수정 필요 : 검색 기능, 스크롤바-->
                 <div class="channel-search">
                     <div class="c-search-icon"><img src="../svg/search-icon.svg"></div>
-                    <div class="c-search-btn"><img src="../svg/leftarrow.svg"></div>
+                    <!-- 채널 내 검색창 요소 추가 허유미 8.3 -->
+                    <input class="c-search-input" type="search" placeholder="Search" autocomplete="off">
                 </div>
+                <!-- 검색이 아닌 스크롤 관련 버튼이므로 클래스명, 이미지 파일명 수정 필요 -->
+                <div class="c-search-btn"><img src="../svg/leftarrow.svg"></div>
         </div>
     
         <!--동영상-->
@@ -541,6 +544,7 @@
     <script src="../js/channel_loading.js"></script>
     <script src="../js/channal_tool.js"></script>
     <script type="text/javascript" src="../js/channel_home.js"></script>
+    <script type="text/javascript" src="../js/channel_inner_search.js"></script>
 
 </body>
 </html>
