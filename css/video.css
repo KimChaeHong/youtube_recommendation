@@ -1,6 +1,7 @@
 /* 바디 배경 변경 8.2 김채홍 */
+/* 바디 배경 변경 8.4 허유미 */
 body {
-    background: #181818;
+    background: #000; 
 }
 
 
@@ -345,8 +346,12 @@ ul {
     width: 124px;
     padding: 7px 4px 8px 4px;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center; /* 속성 변경 허유미 8.4 */
     gap: 10px;
+
+    /* 속성 추가 허유미 8.4 */
+    margin-left: auto; 
+    cursor: pointer;
 }
 #sub-btn{
     display: flex;
