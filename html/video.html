@@ -23,7 +23,7 @@
                 <img src="../svg/masthead/menu-icon.svg" alt="menu-icon">
             </div>
             <div id="yt-logo" class="head-yt-btn" onclick="location.href='../index.html'">
-                <img src="../svg/masthead/yt-logo.svg" alt="yt-logo" >
+                <img src="../svg/masthead/yt-logo.svg" alt="yt-logo">
             </div>
         </div>
 
@@ -94,7 +94,7 @@
                         fill="white" />
                 </svg>
             </span>
-            <a>LIbrary</a>
+            <a>Lİbrary</a>
         </div>
     </nav>
 
@@ -488,117 +488,124 @@
     <!-- 7.28 김채홍 비디오 부분 html 추가 -->
     <div class="video">
         <div class="primary">
-            <div id="video-player">
-                <div id="video__container" class="video__container">
-                
-                </div>
-            </div>
-            <div id="video-info">
-                <div id="title">Blind Woodturner: Turning passion into fine art</div>
-                <div id="info">
-                    <div id="info-text">576,969 views . Oct 8, 2021</div>
-                    <!-- 이미지 파일 연결 7.31 김채홍 -->
-                    <div id="top-level" class="top-level">
-                        <div><img src="../svg/video-liked.svg" id="liked"></div>
-                        <div>1.7K</div>
-                        <div><img src="../svg/video-disliked.svg" id="disliked"></div>
-                        <div>632</div>
-                        <div><img src="../svg/video-share.svg" id="share"></div>
-                        <div>SHARE</div>
-                        <div><img src="../svg/video-save.svg" id="save"></div>
-                        <div>SAVE</div>
-                        <div><img src="../svg/video-more.svg" id="more"></div>
+            
+                <div id="video-player">
+
+                    <div id="video__container" class="video__container">
+
                     </div>
+
+                </div>
+                <div id="video-info">
+                    <div id="title">
+                        <div id="video__title" class="video__title">
+                        </div>
+                    </div>
+                    <div id="info">
+                        <div id="info-text">576,969 views . Oct 8, 2021</div>
+                        <!-- 이미지 파일 연결 7.31 김채홍 -->
+                        <div id="top-level" class="top-level">
+                            <div><img src="../svg/video-liked.svg" id="liked"></div>
+                            <div>1.7K</div>
+                            <div><img src="../svg/video-disliked.svg" id="disliked"></div>
+                            <div>632</div>
+                            <div><img src="../svg/video-share.svg" id="share"></div>
+                            <div>SHARE</div>
+                            <div><img src="../svg/video-save.svg" id="save"></div>
+                            <div>SAVE</div>
+                            <div><img src="../svg/video-more.svg" id="more"></div>
+                        </div>
+                    </div>
+                    <hr id="border">
+            
+        </div>
+
+        <div id="video-desc">
+            <div id="desc">
+                <div id="channel-title">
+                    <div id="frame11">
+                        <div id="channel-profile-pic">
+                            <div class="user-avatar">
+                                <img id="user-avatar" src="../svg/oreumi.png" alt="프사">
+                            </div>
+                        </div>
+                        <div id="channel-profile-name">
+                            <div id="channel-name">Marcus Levin</div>
+                            <div id="subscribers">1.2M subscribers</div>
+                        </div>
+                        <div id="channel-subscribes-btn">
+                            <div id="sub-btn">SUBSCRIBES</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="video-desc-text">
+                    <div>Chris Fisher, also known as the Blind Woodturner, learned his craft by listening to
+                        hundreds of hours of YouTube videos and experimenting in his workshop. Now he’s a YouTube
+                        creator himself, sells his products worldwide, and does demonstrations all around the
+                        country.</div>
+                </div>
+                <!-- 버튼 클릭시 내용이 더 펼쳐지는 js 추가해야함 -->
+                <div id="desc-show-more">
+                    <div>SHOW MORE</div>
                 </div>
                 <hr id="border">
             </div>
-
-            <div id="video-desc">
-                <div id="desc">
-                    <div id="channel-title">
-                        <div id="frame11">
-                            <div id="channel-profile-pic">
-                                <div class="user-avatar">
-                                    <img id="user-avatar" src="../svg/oreumi.png" alt="프사">
-                                </div>
-                            </div>
-                            <div id="channel-profile-name">
-                                <div id="channel-name">Marcus Levin</div>
-                                <div id="subscribers">1.2M subscribers</div>
-                            </div>
-                            <div id="channel-subscribes-btn">
-                                <div id="sub-btn">SUBSCRIBES</div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div id="video-desc-text">
-                        <div>Chris Fisher, also known as the Blind Woodturner, learned his craft by listening to
-                            hundreds of hours of YouTube videos and experimenting in his workshop. Now he’s a YouTube
-                            creator himself, sells his products worldwide, and does demonstrations all around the
-                            country.</div>
-                    </div>
-                    <!-- 버튼 클릭시 내용이 더 펼쳐지는 js 추가해야함 -->
-                    <div id="desc-show-more">
-                        <div>SHOW MORE</div>
-                    </div>
-                    <hr id="border">
-                </div>
-            </div>
-
-            <!--댓글창 이어 붙임 7.31 신지수-->
-            <div class="primary-video-comment">
-                <div class="count-comments">
-                    <span>Comments</span>
-                    <span><img src="../svg/bropdown.svg">SORT BY</span>
-                </div>
-                <form id="comment-form">
-                    <div class="comment-icon"><img src="../svg/oreumi.png"></div>
-                    <div class="comment-in">
-                        <textarea id="comment" placeholder="Add a public comment..." required></textarea>
-                        <button class="comment-btn" type="submit">댓글</button>
-                    </div>
-                </form>
-                <div id="comments">
-                    <!--댓글이 작성될 부분-->
-                </div>
-                <div class="comment-sample">
-                    <div class="comment-s-icon"><img src="../svg/jibbi.PNG"></div>
-                    <div class="comment-s-info">
-                        <div><span class="comment-s-name">Jibbi</span>
-                            <sapan class="comment-s-upload">8 hours ago</sapan>
-                        </div>
-                        <div class="comment-s-comment">Naega deo nasda</div>
-                        <div class="comment-s-like"><img src="../svg/like.svg"><img src="../svg/bad.svg">1 <span
-                                class="reply">REPLY</span></div>
-                    </div>
-                </div>
-            </div>
-            <!--여기 까지-->
-
-
         </div>
 
-        <div class="secondary">
-
-            <!-- 세컨더리 카테고리 선택 버튼 추가 7.31 김채홍 -->
-            <div id="top-menu">
-                <div class="top-border"></div>
-
-                <span class="item-border">
-                    <span class="item">전체</span>
-                    <span class="item">게임</span>
-                </span>
-
-                <div class="bottom-border"></div>
+        <!--댓글창 이어 붙임 7.31 신지수-->
+        <div class="primary-video-comment">
+            <div class="count-comments">
+                <span>Comments</span>
+                <span><img src="../svg/bropdown.svg">SORT BY</span>
             </div>
+            <form id="comment-form">
+                <div class="comment-icon"><img src="../svg/oreumi.png"></div>
+                <div class="comment-in">
+                    <textarea id="comment" placeholder="Add a public comment..." required></textarea>
+                    <button class="comment-btn" type="submit">댓글</button>
+                </div>
+            </form>
+            <div id="comments">
+                <!--댓글이 작성될 부분-->
+            </div>
+            <div class="comment-sample">
+                <div class="comment-s-icon"><img src="../svg/jibbi.PNG"></div>
+                <div class="comment-s-info">
+                    <div><span class="comment-s-name">Jibbi</span>
+                        <sapan class="comment-s-upload">8 hours ago</sapan>
+                    </div>
+                    <div class="comment-s-comment">Naega deo nasda</div>
+                    <div class="comment-s-like"><img src="../svg/like.svg"><img src="../svg/bad.svg">1 <span
+                            class="reply">REPLY</span></div>
+                </div>
+            </div>
+        </div>
+        <!--여기 까지-->
 
 
-            <div id="content">
-                <div id="video">
-                    <a href="https://www.youtube.com/watch?v=JXl4QgYUi9c&t=1s"></a>
-                    <!-- 확인 하는 부분 -->
-                    <!--<div id="thumnail">
+    </div>
+
+    <div class="secondary">
+
+        <!-- 세컨더리 카테고리 선택 버튼 추가 7.31 김채홍 -->
+        <div id="top-menu">
+            <div class="top-border"></div>
+
+            <span class="item-border">
+                <span class="item">전체</span>
+                <span class="item">게임</span>
+            </span>
+
+            <div class="bottom-border"></div>
+        </div>
+
+
+        <div id="content">
+            <div id="video">
+                <a href="https://www.youtube.com/watch?v=JXl4QgYUi9c&t=1s"></a>
+                <!-- 확인 하는 부분 -->
+                <!--<div id="thumnail">
                         <div id="thumnail-images">
                             <img id="video-img" src='${videoInfo.image_link}'>
                         </div>
@@ -617,11 +624,11 @@
 
                         </ul>
                     </div> -->
-                </div>
-                <!-- js 부분 추가 7.31 김채홍 -->
-                <main id="feed" class="feed"></main>
             </div>
+            <!-- js 부분 추가 7.31 김채홍 -->
+            <main id="feed" class="feed"></main>
         </div>
+    </div>
     </div>
 
 </body>
@@ -630,5 +637,8 @@
 <!-- video_paly.js 비디오플레이 js 추가 -->
 <script src="../js/video_play.js"></script>
 <script src="../js/comment.js"></script>
+<script src="../index.html"></script>
+
+
 
 </html>
