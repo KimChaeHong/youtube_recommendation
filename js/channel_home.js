@@ -1,5 +1,5 @@
 // 처음 화면 로드 시 전체 비디오 리스트 가져오기
-getVideoChList().then(createVideoChItem);
+getVideoList().then(createVideoItem);
 
 // 현재 주소에서 채널명 가져오기
 let currentURL = window.location.href;
@@ -8,22 +8,22 @@ let channelName = url.searchParams.get("channelName"); //채널명
 channelName = "oreumi";
 
 // 비디오 리스트 정보
-async function getVideoChList() {
+async function getVideoList() {
   let response = await fetch("https://oreumi.appspot.com/video/getVideoList");
   let videoListData = await response.json();
   return videoListData;
 }
 
 // 각 비디오 정보
-async function getVideoChInfo(videoId) {
-  let url = `http://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
+async function getVideoInfo(videoId) {
+  let url = `https://oreumi.appspot.com/video/getVideoInfo?video_id=${videoId}`;
   let response = await fetch(url);
   let videoData = await response.json();
   return videoData;
 }
 
 // 채널 정보
-async function getVideoChannelInfo() {
+async function getChannelInfo() {
   let url = `https://oreumi.appspot.com/channel/getChannelInfo`;
 
   let response = await fetch(url, {
@@ -48,15 +48,18 @@ async function getChannelVideo() {
 }
 
 // 피드 내용 로드
-async function createVideoChItem(videoList) {
-  let channelInfoContainer = document.getElementById("channel-top"); // 채널인포 컨테이너
+async function createVideoItem(videoList) {
+  let channelInfoContainer = document.getElementById(
+    "channel__info__container"
+  ); // 채널인포 컨테이너
   let channelBigVideoBox = document.getElementById("channel__big__video__box"); // 대표영상 컨테이너
+
   let channelInfoItems = ""; //채널인포
   let bigVideoItem = ""; //대표영상
 
   // 각 비디오들 정보 가져오기
   let videoInfoPromises = videoList.map((video) =>
-    getVideoChInfo(video.video_id)
+    getVideoInfo(video.video_id)
   );
   let videoInfoList = await Promise.all(videoInfoPromises);
   
@@ -71,35 +74,68 @@ async function createVideoChItem(videoList) {
   
 
   //채널 정보 가져오기
-  let channelInfo = await getVideoChannelInfo();
+  let channelInfo = await getChannelInfo();
+
+    // // 조회수 간단하게 표현 from channel_search.js
+    function smartViews(views) {
+      if (views >= 1000000) {
+          return `${(views / 1000000).toFixed(1).replace(/\.0$/, '')}M`; // 백만 회
+      } else if (views >= 1000) {
+          return `${(views / 1000).toFixed(0)}K`; // 천 회
+      } else {
+          return `${views}`; 
+      }
+  }
+  let channelSub = smartViews(channelInfo.subscribers);
+
+  function timeAgo(uploadDate) {
+    const now = new Date();
+    const upload = new Date(uploadDate);
+    const timeDiff = now - upload;
+    const daysAgo = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const monthsAgo = Math.floor(daysAgo / 30);
+    const yearsAgo = Math.floor(monthsAgo / 12);
+
+    if (daysAgo === 0) {
+        return "today";
+    } else if (daysAgo === 1) {
+        return "yesterday";
+    } else if (monthsAgo < 1) {
+        return `${daysAgo} days ago`;
+    } else if (monthsAgo < 12) {
+        return `${monthsAgo} months ago`;
+    } else {
+        return `${yearsAgo} years ago`;
+    }
+}
+
 
   //채널정보 페이지에추가
   //css를 위한 태그 수정 8.4 신지수
   // 버튼 구현 8.4 이준희
   channelInfoItems += `
-  <div class="channel-cover">
-    <img src='${channelInfo.channel_banner}' alt="">
-  </div>
-  <div id="channel__info__container">
-    <div class="channel-profile">
-      <div>
-        <img src='${channelInfo.channel_profile}' alt="">
-      </div>
-      <div class="channel-title" >
-        <div>
-          <div class="chanelname">${channelInfo.channel_name}</div> 
-          <div class="subsc-count">${(channelInfo.subscribers)} subscribers</div>
-        </div> 
-        <button id = "subBtn" class="subsc-btn" type = "button" onclick = 'change()' >구독</button>
-      </div>
+  <div class="channel-profile">
+    <div>
+      <img src='${channelInfo.channel_profile}' alt="">
     </div>
-  </div> 
+    <div class="channel-title" >
+      <div>
+        <div class="chanelname">${channelInfo.channel_name}</div> 
+        <div class="subsc-count">${(channelSub)} subscribers</div>
+      </div> 
+      <button id = "subBtn" class="subsc-btn" type = "button" onclick = 'change()' >구독</button>
+    </div>
+  </div>
     `;
 
   channelInfoContainer.innerHTML = channelInfoItems;
 
   // 대표영상정보 페이지에 추가
   let masterVideo = filteredVideoList[0];
+
+  let bigVideoViews = smartViews(masterVideo.views);
+  let loadTimeAgo = timeAgo(masterVideo.upload_date);
+
   bigVideoItem += `
     <div class="s-video">
     <video controls autoplay muted>
@@ -109,8 +145,8 @@ async function createVideoChItem(videoList) {
   <div class="big__video__info">
   <div class="video-title">${masterVideo.video_title}</div><br>
   <div class="video-time">
-    <sapn class="views">${masterVideo.views} views.</sapn>
-    <sapn class="upload-date">${masterVideo.upload_date}</sapn>
+    <sapn class="views">${bigVideoViews} views.</sapn>
+    <sapn class="upload-date">${loadTimeAgo}</sapn>
     </div><br>
     <div class="video-detail">${masterVideo.video_detail}</div>
     </div>
@@ -126,6 +162,8 @@ async function createVideoChItem(videoList) {
     let videoId = filteredVideoList[i].video_id;
     let videoInfo = filteredVideoList[i];
     let videoURL = `./video?id=${videoId}"`;
+    let listVideoViews = smartViews(filteredVideoList[i].views);
+    let listUploadTimeAgo = timeAgo(filteredVideoList[i].upload_date);
 
     playlistItems += `
 
@@ -140,7 +178,7 @@ async function createVideoChItem(videoList) {
         <div class="s-vedio-info-content"> 
           <a class="s-thumb-title">${filteredVideoList[i].video_title}</a>
           <a class="s-chanelname">${channelName}</a>
-          <a class="s-views">${filteredVideoList[i].views} views. ${filteredVideoList[i].upload_date}</a>
+          <a class="s-views">${listVideoViews} views. ${listUploadTimeAgo}</a>
         </div>
       </div>
     </button>
@@ -151,4 +189,12 @@ async function createVideoChItem(videoList) {
 
   playlistContainer.innerHTML = playlistItems;
 }
+
+// 구독 버튼 구현 8.4 이준희
+function change() {
+  const subs = document.getElementById('subBtn');
+  subs.innerText = 'subscribing'
+  subs.style.backgroundColor = "#303030"
+}
+
 
