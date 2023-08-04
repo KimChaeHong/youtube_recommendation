@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         //폼 제출 시 이벤트
 
-        const icon = './svg/oreumi.png';
+        const icon = '../svg/oreumi.png';
         const name = "오르미"
         const commentInput = document.getElementById("comment");//댓글 내용
         const comment = commentInput.value;
