@@ -265,7 +265,7 @@ async function createPlaylistItem(videoList) {
           <img src="${videoInfo.image_link}">
           <div class="img-cover">
             <div class="img-cover-info">
-              <div><img src="../svg/bropdown.svg"></div>
+              <div><img src="./svg/bropdown.svg"></div>
               <div>동영상 5개</div>
             </div>
           </div>
