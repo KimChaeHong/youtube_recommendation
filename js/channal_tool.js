@@ -20,6 +20,8 @@ menuItems.forEach(menu => {
     this.classList.add('active');
 
     // 동영상 영역 및 플레이 리스트, 커뮤니티, 채널, 어바웃 영역 초기화
+    const homeSection = document.querySelector('.channel-home');
+    homeSection.style.display = 'none';
     const videosSection = document.querySelector('.channel-videos');
     videosSection.style.display = 'none';
     const playlistsSection = document.querySelector('.channel-playlists');
@@ -53,6 +55,8 @@ menuItems.forEach(menu => {
       channelSection.style.display = 'block';
     } else if (this.dataset.menu === "ABOUT") {
       aboutSection.style.display = 'block';
+    } else if (this.dataset.menu === "HOME"){
+      homeSection.style.display = 'block';
     }
   });
 });
