@@ -48,7 +48,7 @@ async function getChannelVideo() {
 
 // 피드 내용 로드
 async function createVideoChItem(videoList) {
-  let channelInfoContainer = document.getElementsByClassName("channel_information"); // 채널인포 컨테이너
+  let channelInfoContainer = document.getElementById("channel_information"); // 채널인포 컨테이너
   let channelBigVideoBox = document.getElementById("channel__big__video__box"); // 대표영상 컨테이너
   let channelInfoItems = ""; //채널인포
   let bigVideoItem = ""; //대표영상
@@ -160,7 +160,7 @@ function timeAgo(uploadDate) {
   for (let i = 0; i < filteredVideoList.length; i++) {
     let videoId = filteredVideoList[i].video_id;
     let videoInfo = filteredVideoList[i];
-    let videoURL = `./video?id=${videoId}"`;
+    let videoURL = `./video?id=${videoId}`;
     let listVideoViews = smartViews(filteredVideoList[i].views);
     let listUploadTimeAgo = timeAgo(filteredVideoList[i].upload_date);
 
