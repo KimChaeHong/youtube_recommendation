@@ -62,8 +62,8 @@ async function createVideoItem(videoList) {
         let videoInfo = videoInfoList[i];
         let channelInfo = await getChannelInfo(videoList[i].video_channel);
 
-        let channelURL = `./html/channel.html?channelName=${videoList[i].video_channel}"`;
-        let videoURL = `./html/video.html?id=${videoId}"`;
+        let channelURL = `./html/channel.html?channelName=${videoList[i].video_channel}`;
+        let videoURL = `./html/video.html?id=${videoId}`;
 
         // 조회수 간단하게 표현
         function formatViews(views) {
