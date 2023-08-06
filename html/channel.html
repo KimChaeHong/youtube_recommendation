@@ -95,7 +95,7 @@
                 <!-- 탑 클래스의 css에 마지막 부분에 구분선을 보더 바텀을 통해 넣어줌 -->
                 <!-- 메뉴 1과 2가 다른 이유는 메뉴 1에는 백그라운드 색이 들어가기 때문 -->
                 
-                <button class="menu" type="button" onclick = "location.href=''">
+                <button class="menu" type="button" onclick = "location.href='../index.html'">
                     <!-- 아이콘 삽입 -->
                     <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M4 10V21H10V15H14V21H20V10L12 3L4 10Z" fill="white"/>
@@ -435,16 +435,13 @@
     </div>
 
     <!--채널-->
+    <!--8.4 신지수 채널 베너 삭제-자바스크립트로 구현-->
     <div id="contents" class="channel">
+        <div id="channel_information"></div>
+        <!-- <div class="channel_information">
+                <div id="channel__info__container"></div> -->
+        <!-- </div> -->
 
-        <!-- 채널 타이틀 -->
-        <div class="channel_information">
-            <!-- <div class="channel-title" > -->
-                <div id="channel__info__container">
-                <!-- 자바스크립트로 구현 --></div>
-                <!-- <div class="subsc-btn">SUBSCRIBES</div> -->
-            <!-- </div> -->
-        </div>
         <div class="channel-toolbar">
                 <div class="toolbars">
                     <div class="toolbar-menu" data-menu="HOME">HOME</div>
@@ -454,13 +451,11 @@
                     <div class="toolbar-menu" data-menu="CHANNELS">CHANNELS</div>
                     <div class="toolbar-menu" data-menu="ABOUT">ABOUT</div>
                 </div>
-                <!--수정 필요 : 검색 기능, 스크롤바-->
                 <div class="channel-search">
                     <div class="c-search-icon"><img src="../svg/search-icon.svg"></div>
                     <!-- 채널 내 검색창 요소 추가 허유미 8.3 -->
                     <input class="c-search-input" type="search" placeholder="Search" autocomplete="off">
                 </div>
-                <!-- 검색이 아닌 스크롤 관련 버튼이므로 클래스명, 이미지 파일명 수정 필요 -->
                 <div class="c-scroll-btn"><img src="../svg/leftarrow.svg"></div>
         </div>
     
@@ -508,30 +503,12 @@
                     <div id="feed-list"></div>
             </div>
             <!--커뮤니티, 채널영역-->
-            <div class="channel-community">아직 채널에서 아무 것도 게시하지 않았습니다.</div>
+            <div class="channel-community">
+                <!-- 아직 채널에서 아무 것도 게시하지 않았습니다. -->
+            </div>
             <div class="channel-channels">이 채널에는 다른 채널이 표시되지 않습니다.</div>
             <!--정보 영역-->
-            <div class="channel-about">
-                    <div class="channel-about-grid">
-                        <div class="about-explain">설명<br><br>
-                            <div>나는 오르미 2기!</div>
-                        </div>
-                        <div class="about-static">
-                            <div>통계</div>
-                            <div>가입일:2023.06.19.</div>
-                            <div>조회수:23,881회</div>
-                            <span>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M13.18 4L13.42 5.2L13.58 6H14.4H19V13H13.82L13.58 11.8L13.42 11H12.6H6V4H13.18ZM14 3H5V21H6V12H12.6L13 14H20V5H14.4L14 3Z" fill="white"/>
-                                </svg>
-                                <img src="../svg/video-share.svg">
-                            </span>
-                        </div>
-                        <div class="about-link">링크<br><br>
-                            <div><a href="https://estfamily.career.greetinghr.com/">사이트</a></div>
-                        </div>
-                    </div>
-            </div>
+            <div class="channel-about"></div>
         </div>
     </div>
 
@@ -539,8 +516,9 @@
     <script src="../js/channel_sidebar.js"></script>
     <!-- <script src="../js/channel_search.js"></script>  오류발생: 검색을 하지 않았는데 검색 동영상창이 뜸-->
     <script src="../js/channel_loading.js"></script>
+    <script src="../js/channel_home.js"></script>
     <script src="../js/channal_tool.js"></script>
-    <script type="text/javascript" src="../js/channel_home.js"></script>
+    <!-- <script type="text/javascript" src="../js/channel_home copy.js.js"></script> -->
     <script type="text/javascript" src="../js/channel_inner_search.js"></script>
 
 </body>
