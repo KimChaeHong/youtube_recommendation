@@ -87,13 +87,18 @@ function chang_btn(event) {
     }
   });
 }
-
+// 처음 시작 시 최신순으로 정렬
+document.addEventListener('DOMContentLoaded', sortByLatest);
 //정렬 기준
 async function sortByLatest() {
     const videoList = await getVideoList();
     const videoListContainer = document.getElementById('feed');
     videoListContainer.innerHTML = '';
-    const sortedList = videoList.slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+    const sortedList = videoList.slice().sort((a, b) => {
+      const dateA = new Date(a.upload_date.replace(/-/g, '/'));
+      const dateB = new Date(b.upload_date.replace(/-/g, '/'));
+      return dateB - dateA;
+    });
     createVideoItem(sortedList);
 }
 
@@ -201,25 +206,187 @@ function formatViews(views) {
 }
 
 
-// html 비디오
+// html 비디오, 커뮤니티
 async function createVideoItem(videoList) {
   let feed = document.getElementById("feed");
   let feedItems = "";
+  let communityone = document.querySelector(".channel-community");
+  let communityItems = "";
+  let aboutItemone = document.querySelector(".channel-about");
+  let aboutItems = "";
+  let playlistItemone = document.querySelector(".channel-playlists-info");
+  let playlistItems = "";
 
   let videoInfoPromises = videoList.map((video) =>
     getVideoInfo(video.video_id)
   );
   let videoInfoList = await Promise.all(videoInfoPromises);
 
-  for (let i = 0; i < videoList.length; i++) {
-    let videoId = videoList[i].video_id;
-    let videoInfo = videoInfoList[i];
+    //채널에 맞게 영상 나오게 하기
+  let VCfilteredList = videoInfoList.filter(
+    (videoInfo) => 
+    videoInfo.video_channel === channelName
+  );
+  //최신순 먼저 출력
+  // VCfilteredList.sort((a,b) => b.views - a.views);
+
+  let channelInfo = await getChannelInfo();
+
+  //커뮤니티
+  // 8.5 신지수 채널별로 커뮤미니,정보 추가
+  if (channelName==="oreumi"){
+    communityItems +=`
+        <div class="community-box">
+          <div class="community-usericon"><img src="../svg/oreumi.png"></div>
+          <div class="community-content">
+            <div class="community-username">oreumi</div>
+            <div class="community-content-in">
+              <div>
+                오르미 3기 모집 시작😆<br><br>
+
+                당신도 개발자가 될 수 있다!<br><br>
+                모집 마감 임박
+              </div>
+              <div id="community-img">
+                <img src="../svg/oreumi3.png">
+              </div>
+              <div id="community-liked">
+                <img src="../svg/video-liked.svg"> 3.6k  
+                <img src="../svg/video-disliked.svg">
+              </div>
+            </div>
+          </div>
+        </div>
+        `;
+      aboutItems +=`
+        <div class="channel-about-grid">
+          <div class="about-explain">설명<br><br>
+              <div>나는 오르미 2기!</div>
+          </div>
+          <div class="about-static">
+            <div>통계</div>
+            <div>가입일:2023.06.19.</div>
+            <div>조회수:23,881회</div>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M13.18 4L13.42 5.2L13.58 6H14.4H19V13H13.82L13.58 11.8L13.42 11H12.6H6V4H13.18ZM14 3H5V21H6V12H12.6L13 14H20V5H14.4L14 3Z" fill="white"/>
+              </svg>
+              <img src="../svg/video-share.svg">
+            </span>
+          </div>
+          <div class="about-link">링크<br><br>
+            <div><a href="https://estfamily.career.greetinghr.com/">사이트</a></div>
+          </div>
+        </div>
+      `;
+      communityone.innerHTML = communityItems;
+      aboutItemone.innerHTML = aboutItems;
+
+  }else if(channelName==="나와 토끼들"){
+    communityItems +=`
+        <div class="community-box">
+          <div class="community-usericon"><img src="../svg/rabbit.png"></div>
+          <div class="community-content">
+            <div class="community-username">나와 토끼들</div>
+            <div class="community-content-in">
+              <div>
+                지삐 체육관 원생 모집중<br><br>
+
+                토끼라고 무시당하는 당신을 위한 체육관<br><br>
+                문의 : 02-777-7777
+              </div>
+              <div id="community-img">
+                <img src="../svg/rabbit_attack.PNG">
+              </div>
+              <div id="community-liked">
+                <img src="../svg/video-liked.svg"> 2.8k
+                <img src="../svg/video-disliked.svg">
+              </div>
+            </div>
+          </div>
+        </div>
+        `;
+        aboutItems +=`
+        <div class="channel-about-grid">
+          <div class="about-explain">설명<br><br>
+              <div>지삐별이</div>
+          </div>
+          <div class="about-static">
+            <div>통계</div>
+            <div>가입일:2023.06.19.</div>
+            <div>조회수:9,999회</div>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M13.18 4L13.42 5.2L13.58 6H14.4H19V13H13.82L13.58 11.8L13.42 11H12.6H6V4H13.18ZM14 3H5V21H6V12H12.6L13 14H20V5H14.4L14 3Z" fill="white"/>
+              </svg>
+              <img src="../svg/video-share.svg">
+            </span>
+          </div>
+          <div class="about-link">링크<br><br>
+            <div><a href="https://www.youtube.com/@natgeokorea">사이트</a></div>
+          </div>
+        </div>
+      `;
+      communityone.innerHTML = communityItems;
+      aboutItemone.innerHTML = aboutItems;
+  }else if (channelName==="개조"){
+    communityItems +=`
+        <div class="community-box">
+          <div class="community-usericon"><img src="../svg/gjprofile.png"></div>
+          <div class="community-content">
+            <div class="community-username">개조</div>
+            <div class="community-content-in">
+              <div>
+                8월 4일자 강의 요약
+              </div>
+              <div id="community-img">
+                <img src="../svg/gj.jpg">
+              </div>
+              <div id="community-liked">
+                <img src="../svg/video-liked.svg"> 80
+                <img src="../svg/video-disliked.svg">
+              </div>
+            </div>
+          </div>
+        </div>
+        `;
+        aboutItems +=`
+        <div class="channel-about-grid">
+          <div class="about-explain">설명<br><br>
+              <div>개조로봇</div>
+          </div>
+          <div class="about-static">
+            <div>통계</div>
+            <div>가입일:2023.06.19.</div>
+            <div>조회수:6,666회</div>
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M13.18 4L13.42 5.2L13.58 6H14.4H19V13H13.82L13.58 11.8L13.42 11H12.6H6V4H13.18ZM14 3H5V21H6V12H12.6L13 14H20V5H14.4L14 3Z" fill="white"/>
+              </svg>
+              <img src="../svg/video-share.svg">
+            </span>
+          </div>
+          <div class="about-link">링크<br><br>
+            <div><a href="https://www.youtube.com/@Bodeumofficial">사이트</a></div>
+          </div>
+        </div>
+      `;
+      playlistItems+='생성된 재생목록이 없습니다';
+      playlistItemone.innerHTML = playlistItems;
+      communityone.innerHTML = communityItems;
+      aboutItemone.innerHTML = aboutItems;
+  }
+  
+  for (let i = 0; i < VCfilteredList.length; i++) {
+    let videoId = VCfilteredList[i].video_id;
+    let videoInfo = VCfilteredList[i];
+    // let VCFilterV = VCfilteredList[0];
 
     let uploadTimeAgo = calculateTimeAgo(videoInfo.upload_date);
     let formattedViews = formatViews(videoInfo.views);
 
-    let channelURL = `./channel?channelName=${videoList[i].video_channel}"`;
-    let videoURL = `./video.html?id=${videoId}"`;
+    // let channelURL = `./channel?channelName=${VCfilteredList[i].video_channel}`;
+    let videoURL = `./video.html?id=${videoId}`;
 
     feedItems += `
       <div class="feed-item">
@@ -235,9 +402,9 @@ async function createVideoItem(videoList) {
               </a>
           </div>
       </div>
-    `;
-  }
-  feed.innerHTML = feedItems;
+    `;}
+    feed.innerHTML = feedItems;
+
 }
 
 //8.2 신지수 플레이 리스트에 동영상 추가+수정
@@ -250,13 +417,17 @@ async function createPlaylistItem(videoList) {
     getVideoInfo(video.video_id)
   );
   let videoInfoList = await Promise.all(videoInfoPromises);
+  let VCfilteredPList = videoInfoList.filter(
+    (videoInfo) => 
+    videoInfo.video_channel === channelName
+  );
 
 
-  for (let i = 9; i<12; i++) {
-    let videoId = videoList[i].video_id;
-    let videoInfo = videoInfoList[i];
-    let channelURL = `./channel?channelName=${videoList[i].video_channel}"`;
-    let videoURL = `./video.html?id=${videoId}"`;
+  for (let i = 4; i<VCfilteredPList.length; i++) {
+    let videoId = VCfilteredPList[i].video_id;
+    let videoInfo = VCfilteredPList[i];
+    let channelURL = `./channel?channelName=${videoList[i].video_channel}`;
+    let videoURL = `./video.html?id=${videoId}`;
 
     feedListItems += `
       <div class="feed-list-item">
@@ -266,7 +437,7 @@ async function createPlaylistItem(videoList) {
           <div class="img-cover">
             <div class="img-cover-info">
               <div><img src="../svg/bropdown.svg"></div>
-              <div>동영상 5개</div>
+              <div>동영상 3개</div>
             </div>
           </div>
         </div>
@@ -281,10 +452,6 @@ async function createPlaylistItem(videoList) {
 
   feedList.innerHTML = feedListItems;
 }
-
-
-
-
 
 
 
