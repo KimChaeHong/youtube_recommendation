@@ -79,19 +79,20 @@
     margin: 12px 12px 0 0;
 }
 
-/* 아마도 삭제 예정이라 주석처리 허유미 8.2 */
-/* .contents__section {
-    border-top: 3px solid lightgrey;
-    border-bottom: 3px solid lightgrey;
-    margin: 24px 35px 48px;
+
+/* 마우스 오버 시 fade in 효과 허유미 8.6*/
+.video-play {
+    display: none;
+    width: inherit;
+    height: inherit;
 }
 
-.contents__section h2 {
-    margin-left: 8px;
+@keyframes fadeIn {
+    0% {opacity: 0;}
+
+    100% {opacity: 1;}
 }
 
-.contents__section__items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-} */
+.fade-in {
+    animation: fadeIn 1s;
+}
