@@ -3,8 +3,9 @@
 // 검색 아이콘과 검색창 요소 가져오기
 const cSearchIcon = document.querySelector(".c-search-icon");
 const cSearchInput = document.querySelector(".c-search-input");
+const toolbarVideo = document.querySelector(".toolbar-menu[data-menu='VIDEOS']");
 
-// 검색창 초기 상태를 보이도록 설정
+// 검색창 초기 상태를 보이지 않도록 설정
 cSearchInput.style.display = "none";
 
 // 검색 아이콘 클릭 이벤트 핸들러 추가
@@ -12,9 +13,13 @@ cSearchIcon.addEventListener("click", (event) => {
     event.stopPropagation(); // 이벤트 버블링 방지
 
     // 검색창 토글
-    if (cSearchInput.style.display === "none") {
+    // 툴바 메뉴 중 Videos에서만 검색 가능하도록 조건 추가 허유미 8.6
+    if ((cSearchInput.style.display === "none") && (toolbarVideo.classList.contains('active'))) {
         cSearchInput.style.display = "block";
     } else {
+        if (!toolbarVideo.classList.contains('active')){
+            alert("검색을 원하신다면 VIDEOS 메뉴로 이동하세요.")
+        }
         cSearchInput.style.display = "none";
         cSearchInput.value = '';
     }
