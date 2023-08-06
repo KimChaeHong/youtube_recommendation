@@ -47,7 +47,8 @@ async function getChannelInfo(channelName) {
     return channelData;
 }
 
-// 피드 비디오 리스트 로드
+
+// 컨텐츠 영역 비디오 리스트 로드
 async function createVideoItem(videoList) {
     let contents = document.getElementById("contents");
     let contentsItems = "";
@@ -104,8 +105,9 @@ async function createVideoItem(videoList) {
         <div class="contents__item">
             <a href='${videoURL}'>
                 <div class="contents__item__thumbnail">
-                    <img src="https://storage.googleapis.com/oreumi.appspot.com/img_${videoId}.jpg">
-                    <div class="contents__item__timebar">01:26</div>    
+                    <video class="video-play fade-in" src="https://storage.googleapis.com/oreumi.appspot.com/video_${videoInfo.video_id}.mp4"></video>
+                    <img src="https://storage.googleapis.com/oreumi.appspot.com/img_${videoId}.jpg" alt="Video Thumbnail">
+                    <div class="contents__item__timebar">00:10</div>    
                 </div>
             </a>
             <div class="contents__item__info">
@@ -124,17 +126,49 @@ async function createVideoItem(videoList) {
 
     // 화면에 추가
     contents.innerHTML = contentsItems;
+
+    // 마우스 오버하면 동영상 자동재생 & 마우스 아웃하면 영상 재생 사라짐 허유미 8.6
+    let containers = document.getElementsByClassName("contents__item");
+        for (let i = 0; i < containers.length; i++) {
+            let container = containers[i];
+            let thumbnail = container.querySelector(".contents__item__thumbnail");
+            let thumbnail_img = thumbnail.querySelector("img");
+            let video_play = thumbnail.querySelector(".video-play");
+
+            // 마우스 오버됐을 때
+            thumbnail.addEventListener('mouseenter', function() {
+                timeoutId = setTimeout(function() {
+                    video_play.style.display = "block";
+                    thumbnail_img.style.height = "0px";
+                    video_play.muted = true;
+                    video_play.play();
+                }, 500);
+            });
+
+            // 마우스 아웃 됐을 때
+            thumbnail.addEventListener('mouseleave', function() {
+                clearTimeout(timeoutId);
+                video_play.currentTime = 0;
+                video_play.style.display = "none";
+                thumbnail_img.style.height = "inherit";
+            });
+        }
 }
+
 
 let searchBtn = document.getElementById("search-btn");
 let searchInput = document.getElementById("searchInput");
 
 // 검색 버튼 클릭 시 필터링 실행
+// 검색어 입력값 - 비디오제목, 채널명, 비디오 설명, 태그 포함 허유미 8.7
 searchBtn.addEventListener("click", function () {
-    let searchKeyword = searchInput.value;
+    let searchKeyword = searchInput.value.toLowerCase();
     getVideoList().then((videoList) => {
         let filteredVideoList = videoList.filter((video) =>
-            video.video_title.toLowerCase().includes(searchKeyword.toLowerCase())
+            video.video_title.toLowerCase().includes(searchKeyword) ||
+            video.video_channel.toLowerCase().includes(searchKeyword) ||
+            video.video_detail.toLowerCase().includes(searchKeyword) ||
+            video.video_tag.includes(searchKeyword)
         );
         if (filteredVideoList.length === 0) {
             alert('검색 결과가 없습니다.');
@@ -150,7 +184,10 @@ searchInput.addEventListener("keypress", function (event) {
         let searchKeyword = searchInput.value;
         getVideoList().then((videoList) => {
             let filteredVideoList = videoList.filter((video) =>
-                video.video_title.toLowerCase().includes(searchKeyword.toLowerCase())
+                video.video_title.toLowerCase().includes(searchKeyword) ||
+                video.video_channel.toLowerCase().includes(searchKeyword) ||
+                video.video_detail.toLowerCase().includes(searchKeyword) ||
+                video.video_tag.includes(searchKeyword)
             );
             if (filteredVideoList.length === 0) {
                 alert('검색 결과가 없습니다.');

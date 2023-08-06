@@ -292,8 +292,9 @@ async function createVideoItem(videoList) {
               <div>
                 지삐 체육관 원생 모집중<br><br>
 
-                토끼라고 무시당하는 당신을 위한 체육관<br><br>
-                문의 : 02-777-7777
+                🐰토끼🐰라고 무시당하는 토끼를 위한 체육관<br><br>
+                문의 : 02-777-7777<br>
+                <a href="https://www.youtube.com/watch?v=11cta61wi0g"> 👉무술 맛보기 클릭!👈 </a>
               </div>
               <div id="community-img">
                 <img src="../svg/rabbit_attack.PNG">
@@ -423,34 +424,58 @@ async function createPlaylistItem(videoList) {
   );
 
 
-  for (let i = 4; i<VCfilteredPList.length; i++) {
+  for (let i = 0; i<VCfilteredPList.length; i++) {
     let videoId = VCfilteredPList[i].video_id;
     let videoInfo = VCfilteredPList[i];
+    let pltitle = videoInfo.video_tag[0]
+    let cvtitle = VCfilteredPList[i].video_title
     let channelURL = `./channel?channelName=${videoList[i].video_channel}`;
     let videoURL = `./video.html?id=${videoId}`;
 
-    feedListItems += `
-      <div class="feed-list-item">
-        <a href="./video.html?id=${videoId}">
-        <div class="playlist-thumbnail-item">
-          <img src="${videoInfo.image_link}">
-          <div class="img-cover">
-            <div class="img-cover-info">
-              <div><img src="../svg/bropdown.svg"></div>
-              <div>동영상 3개</div>
-            </div>
+    if (cvtitle.includes("일상")){
+      feedListItems += `
+    <div class="feed-list-item">
+      <a href="./video.html?id=${videoId}">
+      <div class="playlist-thumbnail-item">
+        <img src="${videoInfo.image_link}">
+        <div class="img-cover">
+          <div class="img-cover-info">
+            <div><img src="../svg/bropdown.svg"></div>
+            <div>동영상 2개</div>
           </div>
         </div>
-        <div>
-          <div class="playlist-info">${videoInfo.video_tag}</div>
-          <div class="all-playlist">모든 재생목록 보기</div>
-        </div>
-        </a>
       </div>
-    `;
-  }
-
+      <div>
+        <div class="playlist-info">${pltitle}</div>
+        <div class="all-playlist">모든 재생목록 보기</div>
+      </div>
+      </a>
+    </div>
+  `;
   feedList.innerHTML = feedListItems;
+}else if (cvtitle.includes("공학")){
+  feedListItems += `
+  <div class="feed-list-item">
+    <a href="./video.html?id=${videoId}">
+    <div class="playlist-thumbnail-item">
+      <img src="${videoInfo.image_link}">
+      <div class="img-cover">
+        <div class="img-cover-info">
+          <div><img src="../svg/bropdown.svg"></div>
+          <div>동영상 2개</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="playlist-info">${pltitle}</div>
+      <div class="all-playlist">모든 재생목록 보기</div>
+    </div>
+    </a>
+  </div>
+`;
+feedList.innerHTML = feedListItems;
+}
+}
 }
 
 
