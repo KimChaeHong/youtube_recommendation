@@ -85,7 +85,9 @@ async function createVideoItem(videoList) {
     let tag = tagList[i];
 
     recoSortButtons.innerHTML += `
+
             <button>${tag}</button>
+            
             `;
   }
 
@@ -106,7 +108,6 @@ async function createVideoItem(videoList) {
       </div>
       <div id="channel-subscribes-btn">
           <div id="sub-btn">SUBSCRIBES</div>
-
       </div>
   </div>
 </div>
@@ -114,9 +115,14 @@ async function createVideoItem(videoList) {
 
   let channelInfoDownSide = document.getElementById("channel__info__downside");
   channelInfoDownSide.innerHTML = `
-    <p>${currentVideoInfo.video_detail}
-    </p>
+  <div id="video-desc-text">
+  <div>
+      ${currentVideoInfo.video_detail}
+  </div>
+  <div id="desc-show-more">
     <button>SHOW MORE</button>
+  </div>
+</div>
     `;
 
   // 각 비디오들 정보 가져오기
