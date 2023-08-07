@@ -490,8 +490,8 @@
     <div class="video">
         <div class="primary">
             
-                <div id="video-player">
-
+                <div id="video-player" class="video-player">
+                    <!-- <main id="feed" class="feed"></main> -->
                     <div id="video__container" class="video__container">
                     </div>
 
@@ -500,9 +500,12 @@
                     <div id="title">
                         <div id="video__title" class="video__title">
                         </div>
+                        <div id="reco__sort__buttons" class="reco__sort__buttons">
+                        </div>
                     </div>
+
                     <div id="info">
-                        <div id="info-text">576,969 views . Oct 8, 2021</div>
+                        <div id="info-text"></div>
                         <!-- 이미지 파일 연결 7.31 김채홍 -->
                         <div id="top-level" class="top-level">
                             <div><img src="../svg/video-liked.svg" id="liked"></div>
@@ -519,6 +522,10 @@
                     <hr id="border">
             
         </div>
+        <div id="channel__info__box" class="channel__info__box">
+        </div>
+        <div id="channel__info__downside" class="channel__info__downside">
+        </div>
 
         <div id="video-desc">
             <div id="desc">
@@ -526,12 +533,12 @@
                     <div id="frame11">
                         <div id="channel-profile-pic">
                             <div class="user-avatar">
-                                <img id="user-avatar" src="../svg/oreumi.png" alt="프사">
+                                <img src=${currentChannelInfo.channel_profile} alt="">
                             </div>
                         </div>
                         <div id="channel-profile-name">
-                            <div id="channel-name">Marcus Levin</div>
-                            <div id="subscribers">1.2M subscribers</div>
+                            <div id="channel-name">${currentChannelInfo.channel_name}</div>
+                            <div id="subscribers">${convertViews(currentChannelInfo.subscribers)}</div>
                         </div>
                         <div id="channel-subscribes-btn">
                             <div id="sub-btn">SUBSCRIBES</div>
@@ -626,7 +633,12 @@
                     </div> -->
             </div>
             <!-- js 부분 추가 7.31 김채홍 -->
-            <main id="feed" class="feed"></main>
+            
+            
+
+        
+           
+            </div>
         </div>
     </div>
     </div>

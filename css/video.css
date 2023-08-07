@@ -135,7 +135,7 @@ ul {
 
 
 /* 7.28 김채홍 */
-#video-player {
+.video-player {
     display: flex;
     width: 640px;
     height: 455px;
@@ -494,10 +494,23 @@ a{
 
 /* 비디오플레이 css추가 08.04*/
 .video__container{
-    display: flex;
-    justify-content: center;
-    flex-shrink: 0;
+    position: relative;
     width: 100%;
-    height: 100%;  
-    
+    background-color: #aaa;
+    overflow: hidden;    
+}
+
+.video__container video{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.video__list{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
