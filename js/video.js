@@ -209,7 +209,7 @@ async function createVideoItem(videoList) {
 
   for (let i = 0; i < 5; i++) {
     let video = filteredVideoList[i];
-    let videoId = videoList[i].video_id;
+    let videoId = video.video_id;
     let channelName = video.video_channel;
     let channelURL = `./channel.html?channelName=${channelName}`;
     let videoURL = `./video.html?id=${videoId}`;
