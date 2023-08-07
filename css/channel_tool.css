@@ -1,6 +1,6 @@
 body {
     width: 100%;
-    background-color: #000;
+    background-color: #0f0f0f;
     display: grid;
     grid-template-areas: 
             "main-masthead main-masthead"
@@ -426,7 +426,7 @@ body {
     width: 100%;
     font-family: Roboto;
     font-style: normal;
-    background-color: #000;
+    background-color: #0f0f0f;
     margin: 56px 0 0 60px;
     position: absolute;
     padding-left: 0;
@@ -618,7 +618,7 @@ a{
 }
 
 .thumbnail-item {
-    border: solid 1px black;
+    border: solid 1px #0f0f0f;
     border-radius: 7px;
     position: relative;
     padding-bottom: 56.25%;
@@ -684,7 +684,7 @@ a{
 }
 
 .playlist-thumbnail-item{
-    border: solid 1px black;
+    border: solid 1px #0f0f0f;
     border-radius: 7px;
     position: relative;
     padding-bottom: 56.25%;
