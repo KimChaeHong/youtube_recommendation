@@ -1,6 +1,6 @@
 // 채널 내 동영상 검색 기능 추가 허유미 8.3
 
-// 검색 아이콘과 검색창 요소 가져오기
+// 검색 아이콘, 검색창, 툴바 비디오메뉴  요소 가져오기
 const cSearchIcon = document.querySelector(".c-search-icon");
 const cSearchInput = document.querySelector(".c-search-input");
 const toolbarVideo = document.querySelector(".toolbar-menu[data-menu='VIDEOS']");
@@ -40,9 +40,20 @@ cSearchInput.addEventListener("keypress", function (event) {
     // 엔터 키의 키 코드 = 13
     if (event.keyCode === 13) {
         let searchKeyword = cSearchInput.value;
+
+        // 현재 주소에서 채널명 가져오기 8.7 허유미
+        let currentURL = window.location.href;
+        let url = new URL(currentURL);
+        let channelName = url.searchParams.get("channelName"); //채널명
+
+        // 현재 채널 내에서만 검색 가능하도록 개선 8.7 허유미
         getVideoList().then((videoList) => {
             let filteredVideoList = videoList.filter((video) =>
-                video.video_title.toLowerCase().includes(searchKeyword.toLowerCase())
+            (video.video_channel.toLowerCase() === channelName.toLowerCase()) && 
+            ( video.video_title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+            video.video_channel.toLowerCase().includes(searchKeyword) ||
+            video.video_detail.toLowerCase().includes(searchKeyword) ||
+            video.video_tag.includes(searchKeyword) )
             );
             if (filteredVideoList.length === 0) {
                 alert('검색 결과가 없습니다.');
