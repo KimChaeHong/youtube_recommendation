@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function addComment(icon, name, comment, edit, now) {
         const commentDiv = document.createElement("div");
         commentDiv.classList.add("comment");
-        //<div> 댓글 </div>
 
         // 이미지, 이름, 댓글을 담을 컨테이너 생성
         const contentContainer = document.createElement("div");
@@ -75,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
         editDv.textContent = edit;
 
         //스타일
-        // 그리드
         contentContainer.style.display = "grid";
         contentContainer.style.gridTemplateAreas = '"imgElement nameDv nowDv" "imgElement commentDv commentDv" "imgElement editDv editDv"';
         nameDv.style.gridArea = "nameDv";
@@ -87,8 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
         contentContainer.style.justifyContent = "start";
 
         // 폰트 스타일
-        // contentContainer.style.margin = "30px";
-        // contentContainer.style.marginTop = "30px";
         contentContainer.style.marginBottom = "30px";
         contentContainer.style.color = "white";
         nameDv.style.fontWeight = "bold";
@@ -107,9 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
         contentContainer.appendChild(editDv);
         contentContainer.appendChild(nowDv);
 
-        // 컨테이너를 댓글 div에 추가
         commentDiv.appendChild(contentContainer);
-
-        commentsContainer.appendChild(commentDiv);
+        commentsContainer.insertBefore(commentDiv, commentsContainer.firstChild);
     }
 });
