@@ -94,7 +94,7 @@ body {
 }
 
 #chnnel-name {
-    color: var(--gray-color, #AAA);
+    color: #AAA;
     font-family: Roboto;
     font-size: 12px;
     font-style: normal;
@@ -104,7 +104,7 @@ body {
 }
 
 #channel-views {
-    color: var(--gray-color, #AAA);
+    color:  #AAA;
     font-family: Roboto;
     font-size: 12px;
     font-style: normal;
@@ -124,14 +124,13 @@ body {
     align-items: flex-start;
     flex-shrink: 0;
     /* 구분삭제 김채홍 08.04 */
-    /* border: 1px solid yellow; */
-
+   
 }
 
 #video-info{
     display: flex;
     width: 640px;
-    padding: 20px 0px 8px 0px;
+    padding: 15px 0px 8px 0px;
     flex-direction: column;
     align-items: flex-start;
 }
@@ -141,8 +140,10 @@ body {
     padding: 3px 0px 2px 0px;
     align-items: flex-start;
     gap: 10px;
+   
 
-    color: var(--white-color, #FFF);
+
+    color:  #FFF;
     font-variant-numeric: stacked-fractions;
     font-feature-settings: 'hlig' on, 'dlig' on;
     font-family: Roboto;
@@ -160,6 +161,7 @@ body {
     justify-content: center;
     align-items: flex-start;
     gap: 91px;
+   
 
   
 }
@@ -197,6 +199,7 @@ body {
 
     display: flex;
     padding: 10px 6px 10px 0px;
+   
 
     /* border: solid 1px ;    */
 }
@@ -222,18 +225,18 @@ body {
     width: 640px;
     height: 1px;   
     border-color:#303030
-
-    
 }
 
 #video-desc{
     display: flex;
     width: 640px;
-    height: 166px;
+    height: 140px;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     flex-shrink: 0;
+    
+
 
 }
 
@@ -249,7 +252,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    
 
     /* border: solid 1px white; */
 
@@ -260,7 +263,7 @@ body {
     width: 640px;
     height: 50px;  
     display: flex;
-    /* border: solid 1px white; */
+    
     
 }
 /* 영상 설명 7.31 김채홍*/
@@ -307,7 +310,7 @@ body {
     align-items: flex-start;
 }
 #channel-name{
-    color: var(--white-color, #FFF);
+    color:  #FFF;
     font-family: Roboto;
     font-size: 14px;
     font-style: normal;
@@ -315,7 +318,7 @@ body {
     line-height: normal;
 }
 #subscribers{
-    color: var(--gray-color, #AAA);
+    color:  #AAA;
     font-family: Roboto;
     font-size: 12px;
     font-style: normal;
