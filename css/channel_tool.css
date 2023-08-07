@@ -884,6 +884,7 @@ a{
     display: flex;
     margin-left:106px;
     align-items: center;
+    position: relative;
 }
 
 .xsmall-video{

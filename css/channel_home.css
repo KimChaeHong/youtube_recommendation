@@ -9,6 +9,7 @@
     padding: 24px 0px;
     overflow: auto;
     white-space: nowrap;
+    margin-left:20px;
 }
 
 /* 패딩값 조절 8.7 이준희 */
@@ -96,16 +97,25 @@
 /*8.7 신지수 스크롤 버튼 스타일*/
 #scroll-left-btn{
     transform: scaleX(-1);
+    position: absolute;
+    z-index: 2;
 }
 #scroll-right-btn, #scroll-left-btn{
     background: #212121;
     border: 1px #212121 solid;
     border-radius: 50%;
-    height: 38px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     cursor: pointer;
     align-items: center;
+    margin: 5px;
+}
+#scroll-right-btn{
+    position: absolute;
+    z-index: 2;
+    right:0;
 }
 #scroll-right-btn:hover, #scroll-left-btn:hover{
     background: #717171;
+    border: 1px #717171 solid;
 }
