@@ -883,6 +883,7 @@ a{
 .play-list-video{
     display: flex;
     margin-left:106px;
+    align-items: center;
 }
 
 .xsmall-video{
@@ -914,6 +915,7 @@ a{
     display: flex;
     flex-direction: column;
     margin-top:8px;
+    cursor: pointer;
 }
 
 /* 텍스트 색 변경 8.4 이준희 */

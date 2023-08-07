@@ -1,15 +1,14 @@
-
-
 /* 8.3 이준희 플레이 리스트 정렬 및 효과 추가 */
+/*8.7 신지수 플레이 리스트 스크롤 버튼 추가*/
 #playlist{
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
     align-content: stretch;
-    display: flex;
-    padding: 0px 0px;
-    align-items: flex-start;
-    
+    gap: 10px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    align-items: start;
+    padding: 24px 0px;
+    overflow: auto;
+    white-space: nowrap;
 }
 
 /* 패딩값 조절 8.7 이준희 */
@@ -69,15 +68,16 @@
 .x-video{
     flex-flow: row wrap;
     flex-basis: 218px;
-	width: 118px;
+	width: 19%;
     flex-grow: 0; 
     border: none;
-    background-color: #000;
+    background-color: #0f0f0f;
     box-sizing: border-box;
     margin-bottom: 35px;
     /* margin-top: 35px; */
     margin-right: 10px;
     text-align:left;
+    scroll-snap-align: start;
     /* min-width: 200px; */
 }
 
@@ -93,3 +93,19 @@
     /* display: none; */
 }
 
+/*8.7 신지수 스크롤 버튼 스타일*/
+#scroll-left-btn{
+    transform: scaleX(-1);
+}
+#scroll-right-btn, #scroll-left-btn{
+    background: #212121;
+    border: 1px #212121 solid;
+    border-radius: 50%;
+    height: 38px;
+    width: 60px;
+    cursor: pointer;
+    align-items: center;
+}
+#scroll-right-btn:hover, #scroll-left-btn:hover{
+    background: #717171;
+}
