@@ -1,7 +1,7 @@
 /* 바디 배경 변경 8.2 김채홍 */
 /* 바디 배경 변경 8.4 허유미 */
 body {
-    background: #000; 
+    background: #0f0f0f; 
 }
 
 
@@ -23,7 +23,7 @@ body {
     justify-content: flex-end;
     align-items: flex-start;
     flex-shrink: 0;
-    background: #000;
+    background: #0f0f0f;
 }
 
 /* 높이 삭제 08.02 김채홍 */
@@ -35,7 +35,7 @@ body {
     align-items: center;
     flex-shrink: 0;
     /* background: #123234; */
-    background: #000;
+    background: #0f0f0f;
 
 }
 /* content 하위 태그 css 전체 수정 08.02 김채홍 */
