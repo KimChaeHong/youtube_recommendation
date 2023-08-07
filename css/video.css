@@ -512,6 +512,17 @@ a{
     gap: 8px;
 }
 
+.reco__sort__buttons{
+    overflow: scroll;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.reco__sort__buttons::-webkit-scrollbar{
+    white-space: nowrap;
+}
+
+
 .reco__sort__buttons button{
     padding: 8px 12px;
     border-radius: 32px;
@@ -520,12 +531,16 @@ a{
     background-color: #303030;
     font-size: 14px;
     margin: 0 4px 18px 0;
+
+   
 }
 
 .reco__sort__buttons .selected{
     color: #030303;
     background-color: #fff;
     border: none;
+
+    
 }
 
 .reco__sort__buttons button:hover {
