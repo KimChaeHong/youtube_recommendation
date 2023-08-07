@@ -134,7 +134,7 @@ function timeAgo(uploadDate) {
   // 대표영상정보 페이지에 추가
   let masterVideo = filteredVideoList[0];
   let videoId = filteredVideoList[0].video_id;
-  let svideoHtmlURL = `./video.html?id=${videoId}"`;
+  let svideoHtmlURL = `./video.html?id=${videoId}`;
   let bigVideoViews = smartViews(masterVideo.views);
   let loadTimeAgo = timeAgo(masterVideo.upload_date);
   
@@ -162,11 +162,12 @@ function timeAgo(uploadDate) {
   // 플레이리스트 정보 페이지에 추가
   let playlistContainer = document.getElementById("playlist");
   let playlistItems = "";
-  for (let i = 0; i < filteredVideoList.length; i++) {
-    
+  for (let i = 1; i < filteredVideoList.length; i++) {
+    // 오류 수정 8.7 이준희
+    let videoId = filteredVideoList[i].video_id;
     let videoInfo = filteredVideoList[i];
     let videoURL = `./video?id=${videoId}`;
-    let videoHtmlURL = `./video.html?id=${videoId}"`;
+    let videoHtmlURL = `./video.html?id=${videoId}`;
     let listVideoViews = smartViews(filteredVideoList[i].views);
     let listUploadTimeAgo = timeAgo(filteredVideoList[i].upload_date);
 
@@ -202,4 +203,17 @@ function change() {
   subs.style.backgroundColor = "#303030"
 }
 
+// 8.7 신지수 스크롤 버튼
+document.addEventListener("DOMContentLoaded", function() {
+  const playlist = document.getElementById("playlist");
+  const scrollLeftBtn = document.getElementById("scroll-left-btn");
+  const scrollRightBtn = document.getElementById("scroll-right-btn");
 
+  scrollLeftBtn.addEventListener("click", function() {
+      playlist.scrollBy({ left: -250, behavior: "smooth" });
+  });
+
+  scrollRightBtn.addEventListener("click", function() {
+      playlist.scrollBy({ left: 250, behavior: "smooth" });
+  });
+});
