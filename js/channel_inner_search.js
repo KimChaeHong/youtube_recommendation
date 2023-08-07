@@ -1,6 +1,6 @@
 // 채널 내 동영상 검색 기능 추가 허유미 8.3
 
-// 검색 아이콘과 검색창 요소 가져오기
+// 검색 아이콘, 검색창, 툴바 비디오메뉴  요소 가져오기
 const cSearchIcon = document.querySelector(".c-search-icon");
 const cSearchInput = document.querySelector(".c-search-input");
 const toolbarVideo = document.querySelector(".toolbar-menu[data-menu='VIDEOS']");
