@@ -827,6 +827,7 @@ a{
     left: 0;
     width: 100%;
     height: 100%;
+    cursor: pointer;
 }
 
 .video-desc{
@@ -837,6 +838,7 @@ a{
 
 .video-title{
     font-size: 25px;
+    cursor: pointer;
 }
 .video-time{
     color:#AAA;
@@ -893,6 +895,7 @@ a{
     height: 0;
     padding-bottom: 56.25%;
     overflow: hidden;
+    cursor: pointer;
 }
 .thumbnail-img iframe{
     position: absolute;
@@ -906,6 +909,7 @@ a{
     display: flex;
     flex-direction: column;
     margin-top:8px;
+    cursor: pointer;
 }
 
 /* 텍스트 색 변경 8.4 이준희 */
