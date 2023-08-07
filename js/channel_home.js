@@ -104,6 +104,8 @@ function timeAgo(uploadDate) {
   }
 }
 
+
+
   //채널정보 페이지에추가
   //css를 위한 태그 수정, 채널 커버 추가 8.4 신지수
   // 버튼 구현 8.4 이준희
@@ -131,10 +133,11 @@ function timeAgo(uploadDate) {
 
   // 대표영상정보 페이지에 추가
   let masterVideo = filteredVideoList[0];
-
+  let videoId = filteredVideoList[0].video_id;
+  let svideoHtmlURL = `./video.html?id=${videoId}"`;
   let bigVideoViews = smartViews(masterVideo.views);
   let loadTimeAgo = timeAgo(masterVideo.upload_date);
-
+  
   bigVideoItem += `
     <div class="s-video">
     <video controls autoplay muted>
@@ -142,7 +145,9 @@ function timeAgo(uploadDate) {
     </video>
   </div>
   <div class="big__video__info">
-  <div class="video-title">${masterVideo.video_title}</div><br>
+  <a href='${svideoHtmlURL}'>
+  <div class="video-title">${masterVideo.video_title}</div></a>
+  <br>
   <div class="video-time">
     <sapn class="views">${bigVideoViews} views.</sapn>
     <sapn class="upload-date">${loadTimeAgo}</sapn>
@@ -158,20 +163,23 @@ function timeAgo(uploadDate) {
   let playlistContainer = document.getElementById("playlist");
   let playlistItems = "";
   for (let i = 0; i < filteredVideoList.length; i++) {
-    let videoId = filteredVideoList[i].video_id;
+    
     let videoInfo = filteredVideoList[i];
     let videoURL = `./video?id=${videoId}`;
+    let videoHtmlURL = `./video.html?id=${videoId}"`;
     let listVideoViews = smartViews(filteredVideoList[i].views);
     let listUploadTimeAgo = timeAgo(filteredVideoList[i].upload_date);
 
     playlistItems += `
 
     <button class="x-video">
+    <a href='${videoHtmlURL}'>
       <div class="s-vedio">
         <div class="thumbnail-home">
           <img src="${filteredVideoList[i].image_link}" alt="">
         </div>
       </div>
+      </a>
 
       <div class="s-vedio-info">
         <div class="s-vedio-info-content"> 
@@ -194,17 +202,4 @@ function change() {
   subs.style.backgroundColor = "#303030"
 }
 
-// 스크롤 버튼
-document.addEventListener("DOMContentLoaded", function() {
-  const playlist = document.getElementById("playlist");
-  const scrollLeftBtn = document.getElementById("scroll-left-btn");
-  const scrollRightBtn = document.getElementById("scroll-right-btn");
 
-  scrollLeftBtn.addEventListener("click", function() {
-      playlist.scrollBy({ left: -250, behavior: "smooth" });
-  });
-
-  scrollRightBtn.addEventListener("click", function() {
-      playlist.scrollBy({ left: 250, behavior: "smooth" });
-  });
-});
