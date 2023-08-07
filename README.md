@@ -20,22 +20,23 @@
 ![home](https://github.com/KimChaeHong/youtube_recommendation/assets/120551363/83c4f4b6-631e-4e31-a915-22fe5e0f3583)
 
 ### Channel
-![channel](https://github.com/KimChaeHong/youtube_recommendation/assets/120551363/ad12656a-6a4b-4ce2-99e9-32571b533943)
+![channel](https://github.com/KimChaeHong/youtube_recommendation/assets/120551363/d8bba537-aac9-423a-97bd-9e2d2f84c364)
 
 ### Video
-![video](https://github.com/KimChaeHong/youtube_recommendation/assets/120551363/e35be779-e020-4ed3-bbdd-f85957f96f24)
+![video](https://github.com/KimChaeHong/youtube_recommendation/assets/120551363/e358871e-8f00-48f9-aa6c-3349501dbdf0)
 
 <br />
 
 
 ## 📢 주요기능
 
-- API를 이용하여 서버에서 동영상 불러오기
+- 반응형 페이지
+- API를 활용하여 서버에서 동영상 불러오기
 - 사이드바 축소 및 확대
-- 동영상 검색
+- 동영상 정렬 및 검색
 - 마우스 오버 동영상 자동 재생
 - 동영상 페이지 댓글 추가
-- 관련 동영상 추천
+- AI를 활용한 관련 동영상 추천
 
 <br />
 
@@ -51,7 +52,7 @@
 
 ## 🔨 기술 스택
 
-<img src="https://github.com/KimChaeHong/youtube_recommendation/assets/120551363/98cb4bd5-e72f-4713-a152-053149d898dd" alt="기술 스택" width="400px" height="250px"/>
+<img src="https://github.com/KimChaeHong/youtube_recommendation/assets/120551363/19063cd6-1ece-4420-bbc3-b198b813ace6" alt="기술 스택" width="400px" height="250px"/>
 
 
 <br />
