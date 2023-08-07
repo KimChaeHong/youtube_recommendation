@@ -494,6 +494,11 @@ a{
     flex-direction: column;
     gap: 8px;
 }
+.reco__sort__buttons {
+    overflow: scroll;
+    overflow: auto;
+    white-space: nowrap;
+}
 
 .reco__sort__buttons button{
     padding: 8px 12px;
@@ -503,6 +508,7 @@ a{
     background-color: #303030;
     font-size: 14px;
     margin: 0 4px 18px 0;
+
 }
 
 .reco__sort__buttons .selected{
