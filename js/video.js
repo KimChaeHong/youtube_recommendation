@@ -205,14 +205,17 @@ async function createVideoItem(videoList) {
   /// 비디오리스트에 추가
   let videoListDiv = document.getElementById("video__list");
   let videoListItems = "";
+  let videoURL = `./video.html?id=${videoId}`;
+
   for (let i = 0; i < 5; i++) {
     let video = filteredVideoList[i];
+    let videoId = video.video_id;
     let channelName = video.video_channel;
-    let videoURL = `./video.html?id=${i}"`;
     let channelURL = `./channel.html?channelName=${channelName}`;
-
+    let videoURL = `./video.html?id=${videoId}`;
     videoListItems += `
         <div class="video__box">
+        <a href="${videoURL}">
             <div class="video__thumbnail">
                 <img src="${video.image_link}" alt="">
             </div>
@@ -225,6 +228,7 @@ async function createVideoItem(videoList) {
                 </a>
                 <p>조회수 ${convertViews(video.views)}  •  ${convertDate(video.upload_date)}</p>
             </div>
+            </a>
         </div>
         `;
   }
