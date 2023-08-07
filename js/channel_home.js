@@ -134,7 +134,7 @@ function timeAgo(uploadDate) {
   // 대표영상정보 페이지에 추가
   let masterVideo = filteredVideoList[0];
   let videoId = filteredVideoList[0].video_id;
-  let svideoHtmlURL = `./video.html?id=${videoId}"`;
+  let svideoHtmlURL = `./video.html?id=${videoId}`;
   let bigVideoViews = smartViews(masterVideo.views);
   let loadTimeAgo = timeAgo(masterVideo.upload_date);
   
@@ -166,7 +166,7 @@ function timeAgo(uploadDate) {
     
     let videoInfo = filteredVideoList[i];
     let videoURL = `./video?id=${videoId}`;
-    let videoHtmlURL = `./video.html?id=${videoId}"`;
+    let videoHtmlURL = `./video.html?id=${videoId}`;
     let listVideoViews = smartViews(filteredVideoList[i].views);
     let listUploadTimeAgo = timeAgo(filteredVideoList[i].upload_date);
 
