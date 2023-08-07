@@ -121,7 +121,7 @@ function timeAgo(uploadDate) {
           <div class="chanelname">${channelInfo.channel_name}</div> 
           <div class="subsc-count">${(channelSub)} subscribers</div>
         </div> 
-        <button id = "subBtn" class="subsc-btn" type = "button" onclick = 'change()' >구독</button>
+        <button id = "subBtn" class="subsc-btn" type = "button" onclick = 'change()' >subscrib</button>
       </div>
     </div>
   </div> 
