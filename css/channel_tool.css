@@ -1,6 +1,6 @@
 body {
     width: 100%;
-    background-color: #0f0f0f;
+    background-color: #000;
     display: grid;
     grid-template-areas: 
             "main-masthead main-masthead"
@@ -166,7 +166,7 @@ body {
     z-index: 1;
     flex-direction: column;
 }
-
+/* */
 #sidebar-mini div {
     margin-bottom: 30px;
     justify-content: center;
@@ -235,6 +235,7 @@ body {
     display: block;
 }
 
+
 .top {
     display: flex;
     padding: 12px 0px;
@@ -260,6 +261,7 @@ body {
     background-color: #3d3d3d;
 }
 
+
 .menu2 {
     display: flex;
     padding: 8px 8px 8px 24px;
@@ -283,6 +285,7 @@ body {
     align-items: flex-start;
     gap: 20px;
 }
+
 
 .menu-title{
     display: flex;
@@ -423,7 +426,7 @@ body {
     width: 100%;
     font-family: Roboto;
     font-style: normal;
-    background-color: #0f0f0f;
+    background-color: #000;
     margin: 56px 0 0 60px;
     position: absolute;
     padding-left: 0;
@@ -536,6 +539,7 @@ a{
     border-bottom: solid 1px white;
 }
 
+
 .channel-search{
     display: flex;
     margin : 18px; /* 요소 변경 허유미 8.4 */
@@ -614,8 +618,8 @@ a{
 }
 
 .thumbnail-item {
-    border: solid 1px #0f0f0f;
-    border-radius: 6px;
+    border: solid 1px black;
+    border-radius: 7px;
     position: relative;
     padding-bottom: 56.25%;
     overflow: hidden;
@@ -680,8 +684,8 @@ a{
 }
 
 .playlist-thumbnail-item{
-    border: solid 1px #0f0f0f;
-    border-radius: 6px;
+    border: solid 1px black;
+    border-radius: 7px;
     position: relative;
     padding-bottom: 56.25%;
     overflow: hidden;
@@ -806,18 +810,21 @@ a{
     margin: 15px 0 15px 30px;
 }
 
+
 /*홈*/
 .channel-home{
     color: white;
 }
+
+/* 마진값 조절 8.7 이준희 */
 .small-video{
     color:#fff;
     display: flex;
     position: relative;
     margin-left: 60px;
     margin-right: 80px;
-    margin-top: 35px;
-    margin-bottom: 35px;
+    margin-top: 17px; 
+    /* margin-bottom: 35px; */
     gap: 30px;
 }
 
@@ -827,7 +834,6 @@ a{
     left: 0;
     width: 100%;
     height: 100%;
-    cursor: pointer;
 }
 
 .video-desc{
@@ -838,7 +844,6 @@ a{
 
 .video-title{
     font-size: 25px;
-    cursor: pointer;
 }
 .video-time{
     color:#AAA;
@@ -874,6 +879,7 @@ a{
 .play-list-btn img{
     padding-right: 10px;
 }
+
 .play-list-video{
     display: flex;
     margin-left:106px;
@@ -895,7 +901,6 @@ a{
     height: 0;
     padding-bottom: 56.25%;
     overflow: hidden;
-    cursor: pointer;
 }
 .thumbnail-img iframe{
     position: absolute;
@@ -909,7 +914,6 @@ a{
     display: flex;
     flex-direction: column;
     margin-top:8px;
-    cursor: pointer;
 }
 
 /* 텍스트 색 변경 8.4 이준희 */
@@ -925,6 +929,7 @@ a{
 /* 텍스트 색 변경 8.4 이준희 */
 .s-chanelname{
     color: var(--gray-color, #AAA);
+    
 }
 
 /* 텍스트 색 정리 8.4 이준희 */
