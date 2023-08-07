@@ -162,8 +162,9 @@ function timeAgo(uploadDate) {
   // 플레이리스트 정보 페이지에 추가
   let playlistContainer = document.getElementById("playlist");
   let playlistItems = "";
-  for (let i = 0; i < filteredVideoList.length; i++) {
-    
+  for (let i = 1; i < filteredVideoList.length; i++) {
+    // 오류 수정 8.7 이준희
+    let videoId = filteredVideoList[i].video_id;
     let videoInfo = filteredVideoList[i];
     let videoURL = `./video?id=${videoId}`;
     let videoHtmlURL = `./video.html?id=${videoId}`;
