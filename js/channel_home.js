@@ -202,4 +202,17 @@ function change() {
   subs.style.backgroundColor = "#303030"
 }
 
+// 8.7 신지수 스크롤 버튼
+document.addEventListener("DOMContentLoaded", function() {
+  const playlist = document.getElementById("playlist");
+  const scrollLeftBtn = document.getElementById("scroll-left-btn");
+  const scrollRightBtn = document.getElementById("scroll-right-btn");
 
+  scrollLeftBtn.addEventListener("click", function() {
+      playlist.scrollBy({ left: -250, behavior: "smooth" });
+  });
+
+  scrollRightBtn.addEventListener("click", function() {
+      playlist.scrollBy({ left: 250, behavior: "smooth" });
+  });
+});
