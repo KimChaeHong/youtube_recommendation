@@ -223,9 +223,7 @@ async function createVideoItem(videoList) {
                 <a href = "${channelURL}">
                   <p>${video.video_channel}</p>
                 </a>
-                <p>조회수 ${convertViews(video.views)}  •  ${convertDate(
-      video.upload_date
-    )}</p>
+                <p>조회수 ${convertViews(video.views)}  •  ${convertDate(video.upload_date)}</p>
             </div>
         </div>
         `;
