@@ -815,14 +815,16 @@ a{
 .channel-home{
     color: white;
 }
+
+/* 마진값 조절 8.7 이준희 */
 .small-video{
     color:#fff;
     display: flex;
     position: relative;
     margin-left: 60px;
     margin-right: 80px;
-    margin-top: 35px;
-    margin-bottom: 35px;
+    margin-top: 17px; 
+    /* margin-bottom: 35px; */
     gap: 30px;
 }
 
@@ -877,9 +879,12 @@ a{
 .play-list-btn img{
     padding-right: 10px;
 }
+
 .play-list-video{
     display: flex;
     margin-left:106px;
+    align-items: center;
+    position: relative;
 }
 
 .xsmall-video{
@@ -911,6 +916,7 @@ a{
     display: flex;
     flex-direction: column;
     margin-top:8px;
+    cursor: pointer;
 }
 
 /* 텍스트 색 변경 8.4 이준희 */
