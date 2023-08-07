@@ -87,11 +87,11 @@ document.addEventListener("DOMContentLoaded", function () {
         // 폰트 스타일
         contentContainer.style.marginBottom = "30px";
         contentContainer.style.color = "white";
-        nameDv.style.fontWeight = "bold";
         nameDv.style.fontSize = "18px";
+        commentDv.style.marginTop = "5px";
+        commentDv.style.marginBottom = "5px";
         editDv.style.color = "#AAAAAA";
         editDv.style.fontSize = "16px";
-        editDv.style.marginLeft = "5px";
         nowDv.style.color = "#AAAAAA";
         nowDv.style.fontSize = "18px";
         nowDv.style.marginLeft = "5px";
