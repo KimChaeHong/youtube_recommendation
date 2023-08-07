@@ -39,60 +39,40 @@ body {
 
 }
 /* content 하위 태그 css 전체 수정 08.02 김채홍 */
-#content {
-    display: flex;
-    padding: 24px 24px 0px 0px;
-    flex-direction: column;
-    align-items: flex-start;
-    
-    /* border: 0.3px solid var(--gray-color, #AAA); */
+
+
+.video__thumbnail{
+    width:200px; 
+    float:left; 
+    margin-right:10px;
 }
 
-#video {
-    display: flex;
-    padding-top: 8px;
-    align-items: flex-start;
-
-  
-}
-/* 이미지크기 수정 08.04 김채홍 */
-#thumnail-images img{
-    width: 168px;
-    height:  94px;;
-    flex-shrink: 0;
-    align-items: flex-start;   
+.video__textbox{ 
+    width:200px;  
+    float:left; 
+    margin-right:10px;
+    justify-content: center;
+    align-content: center; 
+    margin: 30px 0px;
 }
 
-#thumnail {
-    display: flex;
-    padding-right: 8px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+.video__thumbnail img{
+    float:left;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+} 
+
+
+.video__textbox h4{
+    font-size: 16px;
+    word-break:break-all
 }
 
-/* 크기 수정 08.04 김채홍*/
-#thumnail-images {
-    width: 170px;
-    height: 106px;
-    /* border: 1px solid beige; */
-}
-
-#video-text {
-    display: flex;
-    width: 226px;
-    padding: 7px 0px;
-    flex-direction: column;
-    align-items: flex-start;
-    
-    /* border: 1px solid red; */
-}
-
-ul {
-    list-style-type: none;
-    padding-left: 0%;
-    /* border: 1px solid greenyellow; */
-
+.video__textbox p{
+    color: #aaa;
+    font-size: 13px;
 }
 
 #channel-desc {
@@ -512,17 +492,6 @@ a{
     gap: 8px;
 }
 
-.reco__sort__buttons{
-    overflow: scroll;
-    overflow: auto;
-    white-space: nowrap;
-}
-
-.reco__sort__buttons::-webkit-scrollbar{
-    white-space: nowrap;
-}
-
-
 .reco__sort__buttons button{
     padding: 8px 12px;
     border-radius: 32px;
@@ -531,16 +500,12 @@ a{
     background-color: #303030;
     font-size: 14px;
     margin: 0 4px 18px 0;
-
-   
 }
 
 .reco__sort__buttons .selected{
     color: #030303;
     background-color: #fff;
     border: none;
-
-    
 }
 
 .reco__sort__buttons button:hover {
