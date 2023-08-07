@@ -38,7 +38,7 @@ body{
 /*text area 스타일*/
 #comment{
   color :white;
-  background-color: black;
+  background-color: #0f0f0f;
   width: 550px;
   height: 30px;
   font-size: 18px;
@@ -67,7 +67,7 @@ body{
 
 .comment-btn:hover{
   background-color: white;
-  color:black;
+  color:#0f0f0f;
 }
 
 .comment-sample{

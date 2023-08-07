@@ -1,6 +1,6 @@
 body {
     width: 100%;
-    background-color: #000;
+    background-color: #0f0f0f;
     display: grid;
     grid-template-areas: 
             "main-masthead main-masthead"
@@ -166,7 +166,7 @@ body {
     z-index: 1;
     flex-direction: column;
 }
-/* */
+
 #sidebar-mini div {
     margin-bottom: 30px;
     justify-content: center;
@@ -235,7 +235,6 @@ body {
     display: block;
 }
 
-
 .top {
     display: flex;
     padding: 12px 0px;
@@ -261,7 +260,6 @@ body {
     background-color: #3d3d3d;
 }
 
-
 .menu2 {
     display: flex;
     padding: 8px 8px 8px 24px;
@@ -285,7 +283,6 @@ body {
     align-items: flex-start;
     gap: 20px;
 }
-
 
 .menu-title{
     display: flex;
@@ -426,7 +423,7 @@ body {
     width: 100%;
     font-family: Roboto;
     font-style: normal;
-    background-color: #000;
+    background-color: #0f0f0f;
     margin: 56px 0 0 60px;
     position: absolute;
     padding-left: 0;
@@ -539,7 +536,6 @@ a{
     border-bottom: solid 1px white;
 }
 
-
 .channel-search{
     display: flex;
     margin : 18px; /* 요소 변경 허유미 8.4 */
@@ -618,8 +614,8 @@ a{
 }
 
 .thumbnail-item {
-    border: solid 1px black;
-    border-radius: 7px;
+    border: solid 1px #0f0f0f;
+    border-radius: 6px;
     position: relative;
     padding-bottom: 56.25%;
     overflow: hidden;
@@ -684,8 +680,8 @@ a{
 }
 
 .playlist-thumbnail-item{
-    border: solid 1px black;
-    border-radius: 7px;
+    border: solid 1px #0f0f0f;
+    border-radius: 6px;
     position: relative;
     padding-bottom: 56.25%;
     overflow: hidden;
@@ -810,7 +806,6 @@ a{
     margin: 15px 0 15px 30px;
 }
 
-
 /*홈*/
 .channel-home{
     color: white;
@@ -926,7 +921,6 @@ a{
 /* 텍스트 색 변경 8.4 이준희 */
 .s-chanelname{
     color: var(--gray-color, #AAA);
-    
 }
 
 /* 텍스트 색 정리 8.4 이준희 */
