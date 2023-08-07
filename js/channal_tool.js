@@ -60,7 +60,6 @@ menuItems.forEach(menu => {
     }
   });
 });
-// 클릭 이벤트
 
 //8.3 신지수 클릭 이벤트 문제 수정-해결
 // 최신순~
@@ -121,8 +120,6 @@ async function sortByDate() {
     });
     createVideoItem(sortedList);
 }
-// 최신순~ 여기까지
-
 
 //api 동영상 불러오기
 getVideoList().then(createVideoItem);
@@ -205,7 +202,6 @@ function formatViews(views) {
   }
 }
 
-
 // html 비디오, 커뮤니티
 async function createVideoItem(videoList) {
   let feed = document.getElementById("feed");
@@ -222,14 +218,11 @@ async function createVideoItem(videoList) {
   );
   let videoInfoList = await Promise.all(videoInfoPromises);
 
-    //채널에 맞게 영상 나오게 하기
+  //채널에 맞게 영상 나오게 하기
   let VCfilteredList = videoInfoList.filter(
     (videoInfo) => 
     videoInfo.video_channel === channelName
   );
-  //최신순 먼저 출력
-  // VCfilteredList.sort((a,b) => b.views - a.views);
-
   let channelInfo = await getChannelInfo();
 
   //커뮤니티
@@ -381,12 +374,9 @@ async function createVideoItem(videoList) {
   for (let i = 0; i < VCfilteredList.length; i++) {
     let videoId = VCfilteredList[i].video_id;
     let videoInfo = VCfilteredList[i];
-    // let VCFilterV = VCfilteredList[0];
 
     let uploadTimeAgo = calculateTimeAgo(videoInfo.upload_date);
     let formattedViews = formatViews(videoInfo.views);
-
-    // let channelURL = `./channel?channelName=${VCfilteredList[i].video_channel}`;
     let videoURL = `./video.html?id=${videoId}`;
 
     feedItems += `
@@ -405,7 +395,6 @@ async function createVideoItem(videoList) {
       </div>
     `;}
     feed.innerHTML = feedItems;
-
 }
 
 //8.2 신지수 플레이 리스트에 동영상 추가+수정
@@ -422,7 +411,6 @@ async function createPlaylistItem(videoList) {
     (videoInfo) => 
     videoInfo.video_channel === channelName
   );
-
 
   for (let i = 0; i<VCfilteredPList.length; i++) {
     let videoId = VCfilteredPList[i].video_id;
