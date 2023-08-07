@@ -73,9 +73,7 @@ async function createVideoItem(videoList) {
         </div>
     `;
   videoInfoBox.innerHTML = `
-        <p>조회수 ${convertViews(currentVideoInfo.views)}회 • ${convertDate(
-    currentVideoInfo.upload_date
-  )}</p>
+        <p>조회수 ${convertViews(currentVideoInfo.views)}회 • ${convertDate(currentVideoInfo.upload_date)}</p>
     `;
 
   // 추천 태그
@@ -132,47 +130,110 @@ async function createVideoItem(videoList) {
     getVideoInfo(video.video_id)
   );
   let videoInfoList = await Promise.all(videoInfoPromises);
-  //채널명으로 필터링
-  let filteredVideoList = videoInfoList.filter(
-    (videoInfo) => videoInfo.video_channel === channelName
+
+  // 유사도 측정결과 가져오기
+  async function getSimilarity(firstWord, secondWord) {
+    const openApiURL = "http://aiopen.etri.re.kr:8000/WiseWWN/WordRel";
+    const access_key = "622d7513-ad4c-48fd-b479-163611216a9c";
+
+    let requestJson = {
+      argument: {
+        first_word: firstWord,
+        second_word: secondWord,
+      },
+    };
+
+    let response = await fetch(openApiURL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: access_key,
+      },
+      body: JSON.stringify(requestJson),
+    });
+    let data = await response.json();
+    return data.return_object["WWN WordRelInfo"].WordRelInfo.Distance;
+  }
+
+  async function calculateVideoSimilarities(videoList, targetTagList) {
+    let filteredVideoList = [];
+
+    for (let video of videoList) {
+      let totalDistance = 0;
+      let promises = [];
+
+      for (let videoTag of video.video_tag) {
+        for (let targetTag of targetTagList) {
+          if (videoTag == targetTag) {
+            promises.push(0);
+          } else {
+            promises.push(getSimilarity(videoTag, targetTag));
+          }
+        }
+      }
+
+      let distances = await Promise.all(promises);
+
+      for (let distance of distances) {
+        if (distance !== -1) {
+          totalDistance += distance;
+        }
+      }
+
+      if (totalDistance !== 0) {
+        if (targetVideoId !== video.video_id) {
+          filteredVideoList.push({ ...video, score: totalDistance });
+        }
+      }
+    }
+
+    filteredVideoList.sort((a, b) => a.score - b.score);
+
+    filteredVideoList = filteredVideoList.map((video) => ({
+      ...video,
+      score: 0,
+    }));
+    console.log(filteredVideoList);
+    return filteredVideoList;
+  }
+
+  let filteredVideoList = await calculateVideoSimilarities(
+    videoInfoList,
+    targetTagList
   );
 
-  // 비디오리스트에 추가
-  let videoListDiv = document.getElementById("feed");
-  let feedItems = "";
-  for (let i = 0; i < filteredVideoList.length; i++) {
+  /// 비디오리스트에 추가
+  let videoListDiv = document.getElementById("video__list");
+  let videoListItems = "";
+  for (let i = 0; i < 5; i++) {
     let video = filteredVideoList[i];
     let channelName = video.video_channel;
     let videoURL = `./video.html?id=${i}"`;
     let channelURL = `./channel.html?channelName=${channelName}`;
 
-    feedItems += `
-    <div id="video">
-    <a href="https://www.youtube.com/watch?v=JXl4QgYUi9c&t=1s"></a>
-    <div id="thumnail">
-        <div id="thumnail-images">
-            <img src='${videoInfo.image_link}'> 
-        </div>
-    </div>
-    </a>
-    <div id="video-text">
-        <ul>
-            <li id="video-name"><a href='${videoURL}'> ${videoInfo.video_title}</a></li>
-            
-            <div id="channel-desc">
-                <li id="chnnel-name"><a href="${channelURL}">${videoInfo.video_channel}</a></li>
-                <li id="channel-views"><p>${simpleViews} views • ${uploadTimeAgo}</p></li>
-                </div>
+    videoListItems += `
+        <div class="video__box">
+            <div class="video__thumbnail">
+                <img src="${video.image_link}" alt="">
             </div>
-            
-        </ul>
-    </div> 
-</div>
+            <div class="video__textbox">
+                <a href="${videoURL}">
+                <h4>${video.video_title}</h4>
+                </a>
+                <a href = "${channelURL}">
+                  <p>${video.video_channel}</p>
+                </a>
+                <p>조회수 ${convertViews(video.views)}  •  ${convertDate(
+      video.upload_date
+    )}</p>
+            </div>
+        </div>
         `;
   }
 
-  videoListDiv.innerHTML = feedItems;
+  videoListDiv.innerHTML = videoListItems;
 }
+
 
 // 단위 변환 함수
 function convertViews(views) {
